@@ -6,7 +6,7 @@
             </button>
             <div class="collapse show" id="home-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">Shampoo</a></li>
+                    <li><a href="#" class="link-dark rounded selected">Shampoo</a></li>
                     <li><a href="#" class="link-dark rounded">Conditioner</a></li>
                     <li><a href="#" class="link-dark rounded">Hair Styling</a></li>
                 </ul>
