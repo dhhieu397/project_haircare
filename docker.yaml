@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  mariadb:
+    image: 'bitnami/mariadb:latest'
+    ports:
+      - 3306:3306
+    environment:
+      - MARIADB_EXTRA_FLAGS=--max-connect-errors=1000 --max_connections=155
+      - MARIADB_ROOT_USER=root
+      - MARIADB_ROOT_PASSWORD=admin
+      - MARIADB_DATABASE=admin
+    volumes:
+      - ./mariadb/:/bitnami/mariadb
