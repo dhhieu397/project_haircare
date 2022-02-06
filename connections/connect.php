@@ -16,7 +16,7 @@ if (!$dbc)
 	die('Not connected: '.mysqli_connect_error());
 }
 else{
-	echo "connected\n";
+	// echo "connected\n";
 }
 // select database:
 $db_selected = mysqli_select_db($dbc, $database);
@@ -24,7 +24,7 @@ if(!$db_selected){
     // Create database
     $sql = "CREATE DATABASE ".$database;
     if($dbc->query($sql) === True){
-        echo "Database created successfully\n";
+        // echo "Database created successfully\n";
     } else {
         die('Cant create database ' . $dbc->error);
     }
@@ -36,6 +36,6 @@ if (!$db_selected)
 	die('Cant connect: '.mysqli_connect_error());
 } else
 {
-	echo "Database Selected\n";
+	// echo "Database Selected\n";
 }
 ?>
