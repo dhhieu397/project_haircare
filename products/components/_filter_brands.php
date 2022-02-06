@@ -34,7 +34,7 @@ $brand_ls = get_brand($dbc);
                         $selected = !is_null($FILTER_Brand) && in_array($item["value"], $FILTER_Brand, False);
                         $checked = $selected? "checked": "";
                         echo '<div class="form-check">
-                            <input class="form-check-input brand-checkbox" type="checkbox" onclick="onSelectFilterBrand()"
+                            <input class="form-check-input brand-checkbox" type="checkbox" onclick="onSelectFilterBrand('.$item["value"].')"
                                 value="'. $item["value"] .'" id="'. $item["value"] .'" '. $checked .'>
                             <label class="form-check-label" for="'. $item["value"] .'">
                                 '. $item["name"] .' ('. $item["count"] .')
@@ -48,10 +48,18 @@ $brand_ls = get_brand($dbc);
 </div>
 
 <script>
-    function onSelectFilterBrand(){
+    function onSelectFilterBrand(target){
+        console.log(target);
         let checkedVals = $('#brand-filter .brand-checkbox:checkbox:checked').map(function() {
             return this.value;
         }).get();
+        if(target == 0 && checkedVals.includes("0")){
+            // select all
+            checkedVals = [0];
+        }else if(target != 0 && checkedVals.includes("0")){
+            // remove select all
+            checkedVals.splice(checkedVals.indexOf("0"), 1);
+        }
         if(QUERY){
             QUERY["brand"] = checkedVals;
         }
