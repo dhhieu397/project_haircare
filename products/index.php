@@ -47,13 +47,26 @@ $SHOP_NAME = "Shampoo";
     -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
+
 <?php
     echo "var QUERY={
-        category: " .$FILTER_Category .",
-        subcategory: " .$FILTER_SubCategory .",
+        category: " . (is_null($FILTER_Category)?'undefined': $FILTER_Category) .",
+        subcategory: " . (is_null($FILTER_SubCategory)?'undefined': $FILTER_SubCategory) .",
         brand: [" . join(',', $FILTER_Brand) ."],
     }; console.log(QUERY);";
 ?>
+
+    var doQueryProduct = function(){
+        console.log(QUERY);
+        var params = {
+            'category': QUERY.category,
+            'subcategory': QUERY.subcategory,
+            'brand': QUERY.brand.join(',') || 0,
+        }
+        var params = new URLSearchParams(QUERY);
+        window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
+    }
+
     </script>
 </body>
 

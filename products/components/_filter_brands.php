@@ -5,8 +5,8 @@ include __DIR__ . '/../filter.php';
 
 function get_brand($conn){
     $ls = array(0=> array("name" => "All Brands", "value" => 0, "count" => 0));
-    $sql = "SELECT pb.name as name, pb.id as value, COUNT(*) as count FROM `product_item` as pi
-        JOIN `product_brand` pb
+    $sql = "SELECT pb.name as name, pb.id as value, COUNT(pi.id) as count FROM `product_brand` as pb
+        LEFT JOIN `product_item` pi
         ON pb.id = pi.brand
         GROUP BY pi.brand;";
     $result = $conn->query($sql);
@@ -63,6 +63,7 @@ $brand_ls = get_brand($dbc);
         if(QUERY){
             QUERY["brand"] = checkedVals;
         }
-        console.log(QUERY);
+        // console.log(QUERY);
+        doQueryProduct && doQueryProduct();
     }
 </script>
