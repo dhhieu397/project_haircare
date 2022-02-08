@@ -60,6 +60,9 @@ $brand_ls = get_brand($dbc);
             // remove select all
             checkedVals.splice(checkedVals.indexOf("0"), 1);
         }
+        if(checkedVals.length == 0){
+            checkedVals = [0];
+        }
         if(QUERY){
             QUERY["brand"] = checkedVals;
         }

@@ -1,5 +1,9 @@
 <?php
 
+$FILTER_page_size = 18;
+$FILTER_page_number = 0;
+$FILTER_page_count = 0;
+
 $FILTER_Category = (isset($_GET["category"]) && $_GET["category"] != 'undefined') ? $_GET["category"] : NULL;
 $FILTER_SubCategory =  (isset($_GET["subcategory"]) && $_GET["subcategory"] != 'undefined') ? $_GET["subcategory"] : NULL;
 $FILTER_Brand = (isset($_GET["brand"]) && $_GET["brand"] != 'undefined') ? $_GET["brand"] : '';

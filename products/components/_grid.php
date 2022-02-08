@@ -1,7 +1,91 @@
+<?php
+include __DIR__ . '/../../connections/connect.php';
+include __DIR__ . '/../filter.php';
+
+function query_items($conn){
+    global $SORT_REL, $SORT_LATEST, $SORT_NAME_ASC, $SORT_NAME_DESC;
+    global $FILTER_page_size;
+    global $FILTER_page_number;
+    global $FILTER_Sort;
+    global $FILTER_Category;
+    global $FILTER_SubCategory;
+    global $FILTER_Brand;
+
+    $sql = "SELECT pi.name as name, pi.img as img, pb.name as brand
+        FROM product_item as pi
+        JOIN product_brand as pb
+        ON pb.id = pi.brand";
+
+    #build filter
+    $filter = array();
+    if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
+        $sql .= " JOIN product_subcategory as psc
+                ON pi.subcategory = psc.id
+                ";
+        array_push($filter, "psc.parent = '".$FILTER_Category."'");
+    }
+    if(isset($FILTER_SubCategory)){
+        array_push($filter, "pi.subcategory = '".$FILTER_SubCategory."'");
+    }
+    if(isset($FILTER_Brand) && !empty($FILTER_Brand) && !in_array('0', $FILTER_Brand)){
+        $or_q = array();
+        foreach($FILTER_Brand as $fb){
+            array_push($or_q, "pi.brand = '".$fb."'");
+        }
+        array_push($filter, "(".join(' OR ', $or_q).")");
+    }
+    $sql .= " WHERE ".join(' AND ', $filter);
+
+    # build sort
+    $sort = NULL;
+    if(isset($FILTER_Sort) && $FILTER_Sort == $SORT_LATEST){
+        $sort = "pi.creation_date DESC";
+    }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORT_NAME_ASC){
+        $sort = "pi.name ASC";
+    }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORT_NAME_DESC){
+        $sort = "pi.name DESC";
+    }
+    echo $sql;
+
+    $ls = array();
+    $result = $conn->query($sql);
+    $total = mysqli_num_rows($result);
+    if($total > 0){
+        $sql .= " LIMIT ".$FILTER_page_size." OFFSET ".($FILTER_page_size*$FILTER_page_number);
+        if($sort){
+            $sql .= " SORT ".$sort;
+        }
+        echo $sql;
+        while($row=$result->fetch_assoc()){
+            array_push($ls, $row);
+        }
+    }
+    return array("rows"=> $ls, "total"=> $total);
+}
+
+$result = query_items($dbc);
+$items = $result["rows"];
+$total_items = $result["total"];
+
+# set total page count
+if($total_items == 0){
+    $FILTER_page_count = 0;
+}else{
+    $FILTER_page_count = intdiv($total_items, $FILTER_page_size) + 1;
+}
+?>
 <div class="products-table">
     <div class="table-top clearfix">
         <div class="number-of-items float-start">
-            1-18 of 228 items
+            <!-- 1-18 of 228 items -->
+            <?php
+                echo ($FILTER_page_number*$FILTER_page_size+1)
+                    ."-"
+                    .min($total_items, ($FILTER_page_number+1)*$FILTER_page_size+1)
+                    ." of "
+                    .$total_items
+                    .($total_items > 1?" items":" item");
+            ?>
         </div>
 
         <div class="float-end">
@@ -10,7 +94,30 @@
     </div>
 
     <div class="table-content row">
-        <div class="col-4 table-items product-item__container">
+<?php
+    foreach($items as $item){
+        echo '
+            <div class="col-4 table-items product-item__container">
+                <h3 class="product-item__title">
+                    <a href="">
+                        <span class="product-item__thumbnail">
+                            <img src="'.$item["img"].'" alt="" width="100%" height="200px">
+                        </span>
+                        <span class="product-item__brands">
+                            '.$item["brand"].'
+                        </span>
+                        <span class="product-item__name">
+                            '.$item["name"].'
+                        </span>
+                    </a>
+                    <span class="product-item__info">
+                    </span>
+                </h3>
+            </div>
+            ';
+    }
+?>
+        <!-- <div class="col-4 table-items product-item__container">
             <h3 class="product-item__title">
                 <a href="">
                     <span class="product-item__thumbnail">
@@ -25,7 +132,7 @@
                 </a>
                 <span class="product-item__info"></span>
             </h3>
-        </div>
+        </div> -->
     </div>
 
     <div>
