@@ -5,13 +5,7 @@
         </div>
 
         <div class="float-end">
-            <div>Sort by</div>
-            <select class="form-select" aria-label="Sort select">
-                <option value="0" selected>Relevance</option>
-                <option value="1">Latest</option>
-                <option value="2">Name (A-Z)</option>
-                <option value="3">Name (Z-A)</option>
-            </select>
+            <?php include __DIR__ . '/_sort.php'; ?>
         </div>
     </div>
 
@@ -32,5 +26,9 @@
                 <span class="product-item__info"></span>
             </h3>
         </div>
+    </div>
+
+    <div>
+        <?php include __DIR__ . '/_paginate.php'; ?>
     </div>
 </div>

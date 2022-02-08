@@ -8,4 +8,11 @@ $FILTER_Brand = explode(",", $FILTER_Brand);
 //     $FILTER_Brand = array(0);
 // }
 
+$SORT_REL = "relevance";
+$SORT_LATEST = "latest";
+$SORT_NAME_ASC = "name_asc";
+$SORT_NAME_DESC = "name_desc";
+
+$FILTER_Sort = (isset($_GET["sort"]) && $_GET["sort"] != 'undefined')? $_GET["sort"]: $SORT_REL;
+
 ?>
