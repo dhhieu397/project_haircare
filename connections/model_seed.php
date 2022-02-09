@@ -16,6 +16,11 @@ function seed_brand($conn){
             2,
             '3Deluxe',
             '3Deluxe permanent hair colour cream uses innovative and light reflective formulas that add an extra glow to hair colouring services.'
+        ),
+        (
+            3,
+            'Evo',
+            'born from a desire to shake up the hair industry status quo, we have grown from an aussie upstart into a global movement of salons, stylists and free thinkers. from humble beginnings to big ideas… our mission has remained the same: saving ordinary humans from themselves.'
         )
     ";
     $conn->query($sql);

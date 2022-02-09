@@ -102,6 +102,9 @@ if($total_items == 0){
     </div>
 <div class="table-content p-3 row">
 <?php
+    if($total_items == 0){
+        echo "<span class='text-secondary'>No data</span>";
+    }
     foreach($items as $item){
         echo '
             <div class="col-xs-12 col-md-6 col-lg-4 table-items product-item__container">
