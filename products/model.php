@@ -2,7 +2,7 @@
 
 $FILTER_page_size = 18;
 $FILTER_page_number = 0;
-$FILTER_page_count = 13;
+$FILTER_page_count = 0;
 
 $FILTER_Category = (isset($_GET["category"]) && $_GET["category"] != 'undefined') ? $_GET["category"] : NULL;
 $FILTER_SubCategory =  (isset($_GET["subcategory"]) && $_GET["subcategory"] != 'undefined') ? $_GET["subcategory"] : NULL;
@@ -29,5 +29,10 @@ $SELECTED_ITEM = NULL;
 function set_selected_item($val){
     global $SELECTED_ITEM;
     $SELECTED_ITEM = $val;
+}
+
+function set_page_count($val){
+    global $FILTER_page_count;
+    $FILTER_page_count = $val;
 }
 ?>

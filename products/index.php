@@ -11,6 +11,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="statics/css/sidebar.css" rel="stylesheet"></link>
+    <link href="statics/css/main.css" rel="stylesheet"></link>
 
     <title>Hair care</title>
 </head>
@@ -20,10 +21,10 @@
 
 include_once './model.php';
 
-$SHOP_NAME = "Shampoo";
+$SHOP_NAME = "Products";
 ?>
 
-<div class="nav">
+<div class="top-nav p-2 text-secondary small-text">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="" onclick="return navigate('/')">Home</a></li>
@@ -37,10 +38,10 @@ $SHOP_NAME = "Shampoo";
     </h1>
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-xs-4 col-md-3 col-2">
                 <?php include "./components/_left_bar.php"; ?>    
             </div>
-            <div class="col-8">
+            <div class="col-xs-8 col-md-9 col-10">
                 <?php include "./components/_grid.php" ?>
             </div>
         </div>
@@ -67,33 +68,6 @@ $SHOP_NAME = "Shampoo";
         page: '" . (is_null($FILTER_page_number)?0: $FILTER_page_number) ."',
     }; console.log(QUERY);";
 ?>
-    // var BASE_HREF = "<?php echo $_SERVER["PHP_SELF"];?>?";
-
-    // var doQueryProduct = function(){
-    //     console.log(QUERY);
-    //     var params = {
-    //         'category': QUERY.category,
-    //         'subcategory': QUERY.subcategory,
-    //         'brand': QUERY.brand.join(',') || 0,
-    //         'sort': QUERY.sort,
-    //         'page': QUERY.page,
-    //     }
-    //     var params = new URLSearchParams(QUERY);
-    //     window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
-    // }
-
-    // var doQueryProduct = function(){
-    //     console.log(QUERY);
-    //     var params = {
-    //         'category': QUERY.category,
-    //         'subcategory': QUERY.subcategory,
-    //         'brand': QUERY.brand.join(',') || 0,
-    //         'sort': QUERY.sort,
-    //         'page': QUERY.page,
-    //     }
-    //     var params = new URLSearchParams(QUERY);
-    //     window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
-    // }
 
     </script>
 

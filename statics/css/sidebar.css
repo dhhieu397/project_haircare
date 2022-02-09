@@ -54,7 +54,7 @@ main {
 .btn-toggle:hover,
 .btn-toggle:focus {
     color: rgba(0, 0, 0, .85);
-    background-color: #d2f4ea;
+    background-color: #dddee9;
 }
 
 .btn-toggle::before {
@@ -84,7 +84,7 @@ main {
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus,
 .btn-toggle-nav a.selected {
-    background-color: #d2f4ea;
+    background-color: #dddee9;
 }
 
 .scrollarea {
@@ -97,4 +97,11 @@ main {
 
 .lh-tight {
     line-height: 1.25;
+}
+
+ul.sub {
+    list-style-type: none!important;
+}
+ul.sub a {
+    margin-left: 0rem;
 }

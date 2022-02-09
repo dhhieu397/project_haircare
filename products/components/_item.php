@@ -43,20 +43,23 @@ $row = $SELECTED_ITEM;
             <div class="name">
                 <?php echo $row["name"]; ?>
             </div>
-            <div class="info">
+            <div class="info text-secondary small-text">
                 <span><?php echo $row["size"]; ?></span>
                 <span>SKU: <?php echo $row["sku"]; ?></span>
             </div>
-            <div class="description">
+            <div class="description pt-4">
                 <?php echo $row["description"]; ?>
             </div>
-            <div class="product-info">
+            <div class="product-info mt-5">
+                <h5>PRODUCT INFORMATION</h5>
                 <?php echo $row["product_infomation"]; ?>
                 <div class="brand-detail">
+                    <h5><?php echo $row["brand"] ?></h5>
                     <?php echo $row["brand_detail"]; ?>
                 </div>
             </div>
-            <div class="ingredients">
+            <div class="ingredients mt-5">
+                <h5>INGREDIENTS</h5>
                 <?php echo $row["ingredient"]; ?>
             </div>
             

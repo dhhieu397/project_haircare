@@ -14,9 +14,9 @@ if($page<=$half){
     $start_ = $page - $half;
 }
 ?>
-<nav aria-label="Page navigation example">
-    <div class="pagination justify-content-center">
-        <?php echo '<span>Page '.($page+1).' of '.$page_count.'</span>' ?>
+<nav aria-label="Page navigation" style="<?php echo ($page_count>1)?'':'display: none' ?>">
+    <div class="pagination justify-content-center info">
+        <?php echo '<span class="p-2 text-secondary">Page '.($page+1).' of '.$page_count.'</span>' ?>
     </div>
     <ul class="pagination justify-content-center">
         <?php

@@ -1,4 +1,4 @@
-<h2>Filter</h2>
+<h4>Filter</h4>
 
 <?php include "./components/_filter_categories.php"; ?>
 

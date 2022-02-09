@@ -55,9 +55,9 @@ if(!is_null($selected_category)){
 //     $FILTER_SubCategory = $selected_subcategory;
 // }
 ?>
-<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+<div class="flex-shrink-0 pt-3 pb-1 bg-white border-bottom" style="width: 100%;">
     <ul class="list-unstyled ps-0">
-        <li class="mb-1">
+        <li class="mb-0">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                 Category
             </button>

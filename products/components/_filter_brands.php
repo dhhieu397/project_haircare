@@ -42,7 +42,7 @@ function get_brand($conn){
 $brand_ls = get_brand($dbc);
 ?>
 
-<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;" id="brand-filter">
+<div class="flex-shrink-0 p-0 pt-3 bg-white border-bottom" style="width: 100%;" id="brand-filter">
     <ul class="list-unstyled ps-0">
         <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#brands-collapse" aria-expanded="true">

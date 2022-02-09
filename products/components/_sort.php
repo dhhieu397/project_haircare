@@ -1,4 +1,4 @@
-<div>Sort by</div>
+<div class="small-text text-secondary ps-1">Sort by</div>
 <select class="form-select" aria-label="Sort select" id="grid_sort" onchange="onSortChange(this)">
 
 <?php
