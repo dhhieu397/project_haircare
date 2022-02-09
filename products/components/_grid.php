@@ -1,6 +1,8 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
-include __DIR__ . '/../filter.php';
+include_once __DIR__ . '/../model.php';
+include __DIR__ . '/../consts.php';
+
 
 function query_items($conn){
     global $SORT_REL, $SORT_LATEST, $SORT_NAME_ASC, $SORT_NAME_DESC;
@@ -11,10 +13,12 @@ function query_items($conn){
     global $FILTER_SubCategory;
     global $FILTER_Brand;
 
-    $sql = "SELECT pi.name as name, pi.img as img, pb.name as brand
+    $sql = "SELECT pi.name as name, pi.img as img, pi.code as code, pb.name as brand, ps.name as size
         FROM product_item as pi
         JOIN product_brand as pb
-        ON pb.id = pi.brand";
+        ON pb.id = pi.brand
+        JOIN product_size as ps
+        ON ps.id = pi.size";
 
     #build filter
     $filter = array();
@@ -34,7 +38,9 @@ function query_items($conn){
         }
         array_push($filter, "(".join(' OR ', $or_q).")");
     }
-    $sql .= " WHERE ".join(' AND ', $filter);
+    if(!empty($filter)){
+        $sql .= " WHERE ".join(' AND ', $filter);
+    }
 
     # build sort
     $sort = NULL;
@@ -93,16 +99,15 @@ $total_items = $result["total"];
             <?php include __DIR__ . '/_sort.php'; ?>
         </div>
     </div>
-
-    <div class="table-content row">
+<div class="table-content row">
 <?php
     foreach($items as $item){
         echo '
             <div class="col-4 table-items product-item__container">
                 <h3 class="product-item__title">
-                    <a href="">
+                    <a href="" onclick="return onClickItem(\''.$item["code"].'\')">
                         <span class="product-item__thumbnail">
-                            <img src="'.$item["img"].'" alt="" width="100%" height="200px">
+                            <img src="'.$IMAGE_ROOT.$item["img"].'" alt="" width="246px" height="246px">
                         </span>
                         <span class="product-item__brands">
                             '.$item["brand"].'
@@ -112,6 +117,7 @@ $total_items = $result["total"];
                         </span>
                     </a>
                     <span class="product-item__info">
+                        '.$item["size"].'
                     </span>
                 </h3>
             </div>

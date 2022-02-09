@@ -1,12 +1,15 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
-include __DIR__ . '/../filter.php';
+include_once __DIR__ . '/../model.php';
 
 
 function get_brand($conn){
     global $FILTER_Category;
     global $FILTER_SubCategory;
     
+    $sql = "SELECT pb.name as name, pb.id as value, COUNT(pi.id) as count FROM `product_brand` as pb
+            LEFT JOIN `product_item` pi
+            ON pb.id = pi.brand";
     #build filter
     $filter = array();
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
@@ -16,7 +19,7 @@ function get_brand($conn){
         array_push($filter, "psc.parent = '".$FILTER_Category."'");
     }
     if(isset($FILTER_SubCategory)){
-        array_push($filter, "pi.subcategory = '".$FILTER_SubCategory."' OR pi.subcategory IS NULL");
+        array_push($filter, "pi.subcategory = '".$FILTER_SubCategory."'");
     }
     $filter_str = "";
     if(!empty($filter)){
@@ -24,12 +27,8 @@ function get_brand($conn){
     }
 
     $ls = array(0=> array("name" => "All Brands", "value" => 0, "count" => 0));
-    $sql = "SELECT pb.name as name, pb.id as value, COUNT(pi.id) as count FROM `product_brand` as pb
-        LEFT JOIN `product_item` pi
-        ON pb.id = pi.brand
-        ".$filter_str."
-        GROUP BY pi.brand;";
-    echo $sql;
+    $sql .= $filter_str." GROUP BY pi.brand;";
+    // echo $sql;
     $result = $conn->query($sql);
     $total = 0;
     while($row=$result->fetch_assoc()){

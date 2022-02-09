@@ -18,10 +18,20 @@
 <body>
 <?php
 
-include './filter.php';
+include_once './model.php';
 
 $SHOP_NAME = "Shampoo";
 ?>
+
+<div class="nav">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="" onclick="return navigate('/')">Home</a></li>
+        <li class="breadcrumb-item" aria-current="page">Products</li>
+    </ol>
+    </nav>
+</div>
+
     <h1 class="text-center text-uppercase m-5">
         <?php echo "Shop " . $SHOP_NAME; ?>
     </h1>
@@ -57,21 +67,37 @@ $SHOP_NAME = "Shampoo";
         page: '" . (is_null($FILTER_page_number)?0: $FILTER_page_number) ."',
     }; console.log(QUERY);";
 ?>
+    // var BASE_HREF = "<?php echo $_SERVER["PHP_SELF"];?>?";
 
-    var doQueryProduct = function(){
-        console.log(QUERY);
-        var params = {
-            'category': QUERY.category,
-            'subcategory': QUERY.subcategory,
-            'brand': QUERY.brand.join(',') || 0,
-            'sort': QUERY.sort,
-            'page': QUERY.page,
-        }
-        var params = new URLSearchParams(QUERY);
-        window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
-    }
+    // var doQueryProduct = function(){
+    //     console.log(QUERY);
+    //     var params = {
+    //         'category': QUERY.category,
+    //         'subcategory': QUERY.subcategory,
+    //         'brand': QUERY.brand.join(',') || 0,
+    //         'sort': QUERY.sort,
+    //         'page': QUERY.page,
+    //     }
+    //     var params = new URLSearchParams(QUERY);
+    //     window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
+    // }
+
+    // var doQueryProduct = function(){
+    //     console.log(QUERY);
+    //     var params = {
+    //         'category': QUERY.category,
+    //         'subcategory': QUERY.subcategory,
+    //         'brand': QUERY.brand.join(',') || 0,
+    //         'sort': QUERY.sort,
+    //         'page': QUERY.page,
+    //     }
+    //     var params = new URLSearchParams(QUERY);
+    //     window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
+    // }
 
     </script>
+
+    <script src="statics/js/main.js"></script>
 </body>
 
 </html>

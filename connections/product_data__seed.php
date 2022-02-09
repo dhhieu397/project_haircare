@@ -5,9 +5,12 @@ include ('./models.php');
 include ('./model_seed.php');
 
 function seed_items($conn){
+    echo "Seed item";
+    
     $sql = "
     INSERT INTO product_item (
         id,
+        code,
         name,
         description,
         product_infomation,
@@ -16,10 +19,13 @@ function seed_items($conn){
         subcategory,
         brand,
         sku,
+        size,
         creation_date
     )
     VALUES (
         1,
+
+        'evo--be-silver-shampoo-500ml',
 
         'BE SILVER SHAMPOO',
 
@@ -52,6 +58,8 @@ function seed_items($conn){
 
         '53376',
 
+        4,
+
         '2022-02-02'
     );
     ";
@@ -65,15 +73,6 @@ function seed_items($conn){
         (1, 'product_preview__53376_1.png'),
         (1, 'product_preview__53376_2.png');
     ";
-    if($conn->query($sql) !== True){
-        echo "Error: ".$conn->error."\n";
-    }
-
-    $sql = "
-    INSERT INTO product_item_size (product, size)
-    VALUES 
-        (1, 4),
-        (1, 5);";
     if($conn->query($sql) !== True){
         echo "Error: ".$conn->error."\n";
     }

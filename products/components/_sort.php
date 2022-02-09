@@ -2,7 +2,7 @@
 <select class="form-select" aria-label="Sort select" id="grid_sort" onchange="onSortChange(this)">
 
 <?php
-include __DIR__ . '/../filter.php';
+include_once __DIR__ . '/../model.php';
 
 $selected = $FILTER_Sort == $SORT_REL ? 'selected': '';
 echo '<option value="relevance" '.$selected.'>Relevance</option>';

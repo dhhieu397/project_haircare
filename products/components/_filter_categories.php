@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
-include __DIR__ . '/../filter.php';
+include_once __DIR__ . '/../model.php';
 
 
 function get_category($conn){

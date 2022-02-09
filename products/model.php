@@ -8,7 +8,11 @@ $FILTER_Category = (isset($_GET["category"]) && $_GET["category"] != 'undefined'
 $FILTER_SubCategory =  (isset($_GET["subcategory"]) && $_GET["subcategory"] != 'undefined') ? $_GET["subcategory"] : NULL;
 $FILTER_page_number = (isset($_GET["page"]) && $_GET["page"] != 'undefined') ? $_GET["page"] : 0;
 $FILTER_Brand = (isset($_GET["brand"]) && $_GET["brand"] != 'undefined') ? $_GET["brand"] : '';
-$FILTER_Brand = explode(",", $FILTER_Brand); 
+if($FILTER_Brand != ''){
+    $FILTER_Brand = explode(",", $FILTER_Brand); 
+}else{
+    $FILTER_Brand = array(0);
+}
 // if(in_array(0, $FILTER_Brand)){
 //     $FILTER_Brand = array(0);
 // }
@@ -20,4 +24,10 @@ $SORT_NAME_DESC = "name_desc";
 
 $FILTER_Sort = (isset($_GET["sort"]) && $_GET["sort"] != 'undefined')? $_GET["sort"]: $SORT_REL;
 
+$SELECTED_ITEM = NULL;
+
+function set_selected_item($val){
+    global $SELECTED_ITEM;
+    $SELECTED_ITEM = $val;
+}
 ?>
