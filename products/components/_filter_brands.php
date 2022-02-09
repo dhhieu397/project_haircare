@@ -4,11 +4,32 @@ include __DIR__ . '/../filter.php';
 
 
 function get_brand($conn){
+    global $FILTER_Category;
+    global $FILTER_SubCategory;
+    
+    #build filter
+    $filter = array();
+    if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
+        $sql .= " JOIN product_subcategory as psc
+                ON pi.subcategory = psc.id
+                ";
+        array_push($filter, "psc.parent = '".$FILTER_Category."'");
+    }
+    if(isset($FILTER_SubCategory)){
+        array_push($filter, "pi.subcategory = '".$FILTER_SubCategory."' OR pi.subcategory IS NULL");
+    }
+    $filter_str = "";
+    if(!empty($filter)){
+        $filter_str = " WHERE ".join(' AND ', $filter)." ";
+    }
+
     $ls = array(0=> array("name" => "All Brands", "value" => 0, "count" => 0));
     $sql = "SELECT pb.name as name, pb.id as value, COUNT(pi.id) as count FROM `product_brand` as pb
         LEFT JOIN `product_item` pi
         ON pb.id = pi.brand
+        ".$filter_str."
         GROUP BY pi.brand;";
+    echo $sql;
     $result = $conn->query($sql);
     $total = 0;
     while($row=$result->fetch_assoc()){

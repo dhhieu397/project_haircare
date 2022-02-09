@@ -45,7 +45,7 @@ function query_items($conn){
     }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORT_NAME_DESC){
         $sort = "pi.name DESC";
     }
-    echo $sql;
+    // echo $sql;
 
     $ls = array();
     $result = $conn->query($sql);
@@ -55,7 +55,7 @@ function query_items($conn){
         if($sort){
             $sql .= " SORT ".$sort;
         }
-        echo $sql;
+        // echo $sql;
         while($row=$result->fetch_assoc()){
             array_push($ls, $row);
         }
@@ -68,11 +68,12 @@ $items = $result["rows"];
 $total_items = $result["total"];
 
 # set total page count
-if($total_items == 0){
-    $FILTER_page_count = 0;
-}else{
-    $FILTER_page_count = intdiv($total_items, $FILTER_page_size) + 1;
-}
+// if($total_items == 0){
+//     $FILTER_page_count = 0;
+// }else{
+//     $FILTER_page_count = intdiv($total_items, $FILTER_page_size) + 1;
+// }
+
 ?>
 <div class="products-table">
     <div class="table-top clearfix">

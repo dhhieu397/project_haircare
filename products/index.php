@@ -54,6 +54,7 @@ $SHOP_NAME = "Shampoo";
         subcategory: " . (is_null($FILTER_SubCategory)?'undefined': $FILTER_SubCategory) .",
         brand: [" . join(',', $FILTER_Brand) ."],
         sort: '" . (is_null($FILTER_Sort)?'undefined': $FILTER_Sort) ."',
+        page: '" . (is_null($FILTER_page_number)?0: $FILTER_page_number) ."',
     }; console.log(QUERY);";
 ?>
 
@@ -64,6 +65,7 @@ $SHOP_NAME = "Shampoo";
             'subcategory': QUERY.subcategory,
             'brand': QUERY.brand.join(',') || 0,
             'sort': QUERY.sort,
+            'page': QUERY.page,
         }
         var params = new URLSearchParams(QUERY);
         window.location.href = "<?php echo $_SERVER["PHP_SELF"];?>?" + params.toString();
