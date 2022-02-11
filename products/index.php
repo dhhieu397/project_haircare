@@ -24,7 +24,7 @@
 
     <section class="banner2" >
 
-        <div class="row-banner2">
+        <div class="row-banner2 banner-product">
             <div class="content2">
                 <h3>SHOP <br> Products</h3>
                 <p>Explore our range of <br>professional hair care products<br> formulated for all hair types.</p>
