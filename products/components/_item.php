@@ -3,6 +3,17 @@ include_once __DIR__ . '/../model.php';
 include_once __DIR__ . '/../consts.php';
 
 $row = $SELECTED_ITEM;
+
+function format_star($rate, $star){
+    if($rate<$star+0.5){
+        return 'fa-star-o-alt';
+    }
+    if($rate<$star+1){
+        return 'fa-star-half-alt';
+    }
+    return 'fa-star';
+}
+
 ?>
 <div class="row">
     <div class="col-6">
@@ -48,15 +59,16 @@ $row = $SELECTED_ITEM;
                 <span>SKU: <?php echo $row["sku"]; ?></span>
             </div>
             <div class="product-item__title">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                <span> (50) </span>
-                <div class="price">$40.00 <span>$50.00</span></div>
-                </div>
+                <?php 
+                    echo '<div class="stars">
+                            <i class="fas '.format_star((float)$row["rate"], 0).'"></i>
+                            <i class="fas '.format_star((float)$row["rate"], 1).'"></i>
+                            <i class="fas '.format_star((float)$row["rate"], 2).'"></i>
+                            <i class="fas '.format_star((float)$row["rate"], 3).'"></i>
+                            <i class="fas '.format_star((float)$row["rate"], 4).'"></i>
+                        <span> ('.$row["rate_number"].') </span>
+                        <div class="price">$'.$row["price"].' <span>$'.$row["real_price"].'</span></div>';
+                ?>
             </div>
             <div class="description pt-4">
                 <?php echo $row["description"]; ?>

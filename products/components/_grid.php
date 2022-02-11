@@ -13,7 +13,9 @@ function query_items($conn){
     global $FILTER_SubCategory;
     global $FILTER_Brand;
 
-    $sql = "SELECT pi.name as name, pi.img as img, pi.code as code, pb.name as brand, ps.name as size
+    $sql = "SELECT pi.name as name, pi.img as img, pi.code as code, 
+                   pi.price, pi.real_price, pi.rate, pi.rate_number,
+                   pb.name as brand, ps.name as size
         FROM product_item as pi
         JOIN product_brand as pb
         ON pb.id = pi.brand
@@ -80,6 +82,16 @@ if($total_items == 0){
     set_page_count(intdiv($total_items, $FILTER_page_size) + 1);
 }
 
+function format_star($rate, $star){
+    if($rate<$star+0.5){
+        return 'fa-star-o-alt';
+    }
+    if($rate<$star+1){
+        return 'fa-star-half-alt';
+    }
+    return 'fa-star';
+}
+
 ?>
 <div class="products-table">
     <div class="table-top clearfix">
@@ -124,13 +136,13 @@ if($total_items == 0){
                     <span class="product-item__info p-1 text-secondary small-text">
                     </span>
                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    <span> (50) </span>
-                    <div class="price">$40.00 <span>$50.00</span></div>
+                        <i class="fas '.format_star((float)$item["rate"], 0).'"></i>
+                        <i class="fas '.format_star((float)$item["rate"], 1).'"></i>
+                        <i class="fas '.format_star((float)$item["rate"], 2).'"></i>
+                        <i class="fas '.format_star((float)$item["rate"], 3).'"></i>
+                        <i class="fas '.format_star((float)$item["rate"], 4).'"></i>
+                    <span> ('.$item["rate_number"].') </span>
+                    <div class="price">$'.$item["price"].' <span>$'.$item["real_price"].'</span></div>
                 </div>
                 </h3>
             </div>

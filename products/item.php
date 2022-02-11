@@ -28,7 +28,8 @@ include_once __DIR__ . '/model.php';
 
 function get_item($conn, $code){
     $sql = "SELECT pi.id, pi.name, pi.description, pi.product_infomation, pi.ingredient, pi.sku,
-                    pb.name as brand, pb.description as brand_detail, ps.name as size
+                   pi.price, pi.real_price, pi.rate, pi.rate_number,
+                   pb.name as brand, pb.description as brand_detail, ps.name as size
             FROM product_item as pi
             JOIN product_brand as pb ON pi.brand = pb.id
             JOIN product_size as ps ON pi.size = ps.id

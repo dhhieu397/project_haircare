@@ -52,8 +52,8 @@
     border-radius: .5rem;
     position: relative;
     background: #f7f7f7;
-    /* padding: 2rem; */
-    /* text-align: center; */
+    padding: 2rem;
+    text-align: center;
 }
 
 .product-item__title .fa-heart {
@@ -103,7 +103,7 @@
     font-size: 1em;
     font-weight: normal;
     color: #423a3a;
-    min-height: 6.8rem;
+    min-height: 5rem;
 }
 
 .product-item__container .product-item__info {

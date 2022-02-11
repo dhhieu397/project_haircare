@@ -20,7 +20,11 @@ function seed_item_1($conn){
         brand,
         sku,
         size,
-        creation_date
+        creation_date,
+        price,
+        real_price,
+        rate,
+        rate_number
     )
     VALUES (
         1,
@@ -51,16 +55,12 @@ function seed_item_1($conn){
         </p>',
 
         'product_thumbnail_53376.png',
-
         1,
-
         1,
-
         '53376',
-
         4,
-
-        '2022-02-02'
+        '2022-02-02',
+        40, 55, 4.8, 120
     );
     ";
     if($conn->query($sql) !== True){
@@ -94,7 +94,11 @@ function seed_item_2($conn){
         brand,
         sku,
         size,
-        creation_date
+        creation_date,
+        price,
+        real_price,
+        rate,
+        rate_number
     )
     VALUES (
         2,
@@ -128,14 +132,11 @@ function seed_item_2($conn){
         'product_thumbnail_39219.png',
 
         1,
-
         3,
-
         '39219',
-
         3,
-
-        '2022-02-02'
+        '2022-02-02',
+        60, 75, 3.8, 32
     );
     ";
     // echo $sql;
