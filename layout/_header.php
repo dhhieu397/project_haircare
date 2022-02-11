@@ -12,7 +12,7 @@
         <!-- <a href="#composition">composition</a> -->
         <a href="#gallery">gallery</a>
         <!-- <a href="#latestdevelopments">latest developments</a> -->
-        <a href="#contactus">contact us</a>
+        <a href="javascript:void()" onclick="return navigate('contact_us')">contact us</a>
     </nav>
 
     <div class="icons">
