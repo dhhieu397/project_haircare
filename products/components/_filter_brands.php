@@ -8,7 +8,7 @@ function get_brand($conn){
     global $FILTER_SubCategory;
     
     $sql = "SELECT pb.name as name, pb.id as value, COUNT(pi.id) as count FROM `product_brand` as pb
-            LEFT JOIN `product_item` pi
+            JOIN `product_item` pi
             ON pb.id = pi.brand";
     #build filter
     $filter = array();
@@ -53,7 +53,7 @@ $brand_ls = get_brand($dbc);
                     foreach($brand_ls as $item){
                         $selected = !is_null($FILTER_Brand) && in_array($item["value"], $FILTER_Brand, False);
                         $checked = $selected? "checked": "";
-                        echo '<div class="form-check">
+                        echo '<div class="form-check pt-1 pb-1">
                             <input class="form-check-input brand-checkbox" type="checkbox" onclick="onSelectFilterBrand('.$item["value"].')"
                                 value="'. $item["value"] .'" id="'. $item["value"] .'" '. $checked .'>
                             <label class="form-check-label" for="'. $item["value"] .'">

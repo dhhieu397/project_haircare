@@ -10,7 +10,7 @@ var doQueryProduct = function(){
         'page': QUERY.page,
     }
     var params = new URLSearchParams(QUERY);
-    window.location.href = BASE_HREF + "products?" + params.toString();
+    window.location.href = BASE_HREF + "products/?" + params.toString();
 }
 
 var onClickItem = function(item){

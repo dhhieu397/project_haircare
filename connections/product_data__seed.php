@@ -37,7 +37,7 @@ function seed_item_1($conn){
         Vegan friendly</li>
         <li>Free from gluten, parabens and mineral oils 
         Recommended for bleached, blonde, grey or highlighted hair</li></ul>
-        <p>The recommended retail price (RRP) for this item is $29.95.</p><br/>
+        <p>The recommended retail price (RRP) for this item is $29.95.</p>
         <p>360 Be Silver Shampoo is designed to combat yellow, gold and brassy tones to help maintain the coolness of blonde, silver or grey hair. This deeply nourishing, vegan formula is enriched with Chamomile, An infusion of Sweet Almond Oil and Panthenol strengthen and hydrate the hair, leaving it soft and shiny. Free of parabens, gluten and mineral oils, this anti-yellow shampoo is gentle enough for daily use and pairs perfectly with 360 Be Silver Conditioner for premium toning while improving the overall condition of the hair.</p>',
 
         '<ul>

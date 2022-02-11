@@ -108,7 +108,8 @@ if($total_items == 0){
     foreach($items as $item){
         echo '
             <div class="col-xs-12 col-md-6 col-lg-4 table-items product-item__container">
-                <h3 class="product-item__title">
+                <h3 class="product-item__title box">
+                    <a href="" onclick="return false;" class="fas fa-heart"></a>
                     <a class="no-decoration w-100 d-block" href="" onclick="return onClickItem(\''.$item["code"].'\')">
                         <span class="product-item__thumbnail d-block">
                             <img class="center" src="'.$IMAGE_ROOT.$item["img"].'" alt="" width="246px" height="246px">
@@ -117,12 +118,20 @@ if($total_items == 0){
                             '.$item["brand"].'
                         </span>
                         <span class="product-item__name p-1">
-                            '.$item["name"].'
+                            '.$item["name"].' ('.$item["size"].')
                         </span>
                     </a>
                     <span class="product-item__info p-1 text-secondary small-text">
-                        '.$item["size"].'
                     </span>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    <span> (50) </span>
+                    <div class="price">$40.00 <span>$50.00</span></div>
+                </div>
                 </h3>
             </div>
             ';

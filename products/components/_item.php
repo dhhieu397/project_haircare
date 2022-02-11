@@ -47,19 +47,30 @@ $row = $SELECTED_ITEM;
                 <span><?php echo $row["size"]; ?></span>
                 <span>SKU: <?php echo $row["sku"]; ?></span>
             </div>
+            <div class="product-item__title">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                <span> (50) </span>
+                <div class="price">$40.00 <span>$50.00</span></div>
+                </div>
+            </div>
             <div class="description pt-4">
                 <?php echo $row["description"]; ?>
             </div>
             <div class="product-info mt-5">
-                <h5>PRODUCT INFORMATION</h5>
+                <h3>PRODUCT INFORMATION</h3>
                 <?php echo $row["product_infomation"]; ?>
                 <div class="brand-detail">
-                    <h5><?php echo $row["brand"] ?></h5>
+                    <h3><?php echo $row["brand"] ?></h3>
                     <?php echo $row["brand_detail"]; ?>
                 </div>
             </div>
             <div class="ingredients mt-5">
-                <h5>INGREDIENTS</h5>
+                <h3>INGREDIENTS</h3>
                 <?php echo $row["ingredient"]; ?>
             </div>
             
