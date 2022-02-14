@@ -251,12 +251,13 @@ function seed_item_4($conn, $id){
         real_price,
         rate,
         rate_number,
-        total
+        total,
+        guide
     )
     VALUES (
         ".$id.",
 
-        'evo--ritual-salvation-repairing-shampoo-300ml',
+        'evo--ritual-salvation-repairing-shampoo-2-300ml',
 
         'RITUAL SALVATION REPAIRING SHAMPOO',
 
@@ -289,7 +290,8 @@ function seed_item_4($conn, $id){
         3,
         '2022-02-02',
         60, 75, 3.8, 32,
-        2
+        2,
+        '1. Guide here'
     );
     ";
     // echo $sql;

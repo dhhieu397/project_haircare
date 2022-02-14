@@ -139,6 +139,13 @@
     /* float: right; */
 }
 
+.product-item__container .guide {
+    background: #dfdfdf;
+    padding: 2rem;
+    margin-top: 4rem;
+    font-size: 1.4rem;
+}
+
 .no-decoration {
     text-decoration: none!important;
 }
@@ -182,6 +189,10 @@
     background: inherit;
     padding: 0;
     text-align: left;
+}
+
+.product-info .guide {
+
 }
 
 .page-content {

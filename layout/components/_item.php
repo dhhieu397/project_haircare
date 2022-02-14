@@ -67,11 +67,9 @@ function format_star($rate, $star){
                             <i class="fas '.format_star((float)$row["rate"], 3).'"></i>
                             <i class="fas '.format_star((float)$row["rate"], 4).'"></i>
                         <span> ('.$row["rate_number"].') </span>
-                        <div class="price">$'.$row["price"].' <span>$'.$row["real_price"].'</span>
-                        </div>
-                        '.$row["total"].'
+                        <div class="price">$'.$row["price"].' <span>$'.$row["real_price"].'</span></div>
                         <span class="sold-out item" style="'.($row["total"]<=0?'':'display:none').'">Sold out</span>
-            ';
+                        </div>';
                 ?>
             </div>
             <div class="description pt-4">
@@ -91,5 +89,11 @@ function format_star($rate, $star){
             </div>
             
         </div>
+    </div>
+    <div class="col-12 guide" style="<?php echo (isset($row["guide"])&&$row["guide"])?'':'display:none'; ?>">
+        <h3>How to use</h3>
+        <p>
+            <?php echo $row["guide"] ?>
+        </p>
     </div>
 </div>
