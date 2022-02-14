@@ -29,6 +29,15 @@ var onClickItem = function(item){
     return false;
 }
 
+var onCompareItem = function(item, item_compare){
+    var params = new URLSearchParams({
+        'item': item,
+        'item_compare': item_compare,
+    });
+    window.location.href = dir(CURRENT_URL) + "/compare.php?" + params.toString();
+    return false;
+}
+
 var navigate = function(path){
     console.log(BASE_HREF + path)
     if(path[0] == '/'){

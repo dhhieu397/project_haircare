@@ -28,7 +28,7 @@ include_once __DIR__ . '/../model.php';
 
 function get_item($conn, $code){
     $sql = "SELECT pi.id, pi.name, pi.description, pi.product_infomation, pi.ingredient, pi.sku,
-                   pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total,
+                   pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total, pi.subcategory,
                    pb.name as brand, pb.description as brand_detail, ps.name as size
             FROM product_item as pi
             JOIN product_brand as pb ON pi.brand = pb.id
@@ -89,6 +89,12 @@ if(!is_null($row)){
 }
 ?>
 </div>
+
+<script>
+    <?php
+        echo "var CURRENT_URL='".$_SERVER['PHP_SELF']."';\n";
+    ?>
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

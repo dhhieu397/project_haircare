@@ -20,45 +20,6 @@
 
 <body>
 
-<?php
-
-include __DIR__ . '/../connections/connect.php';
-include __DIR__ . '/../consts.php';
-include_once __DIR__ . '/../model.php';
-
-function get_item($conn, $code){
-    $sql = "SELECT pi.id, pi.name, pi.description, pi.product_infomation, pi.ingredient, pi.sku,
-                   pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total, pi.guide, pi.subcategory, pi.code,
-                   pb.name as brand, pb.description as brand_detail, ps.name as size
-            FROM product_item as pi
-            JOIN product_brand as pb ON pi.brand = pb.id
-            JOIN product_size as ps ON pi.size = ps.id
-            WHERE pi.code = '".$code."'";
-    // echo $sql;
-    $result = $conn->query($sql);
-    $row=$result->fetch_assoc();
-    if($row){
-        $images = array();
-        $sql = "SELECT img FROM product_item_image 
-                WHERE product = '".$row["id"]."'";
-        $result = $conn->query($sql);
-        while($img = mysqli_fetch_assoc($result)){
-            array_push($images, $img["img"]);
-        }
-        $row["images"] = $images;
-    }
-    return $row;
-}
-
-$SELECTED_ITEM_CODE = isset($_GET["item"])? $_GET["item"]: NULL;
-if($SELECTED_ITEM_CODE){
-    $row = get_item($dbc, $SELECTED_ITEM_CODE);
-}else{
-    $row = NULL;
-}
-set_selected_item($row);
-?>
-
 <?php include __DIR__."/../layout/_header.php"; ?>
 
 <section class="page-content">
@@ -70,9 +31,7 @@ set_selected_item($row);
                 <a href="" onclick="return navigate('equipments')">Equipments</a>
             </li>
             <li class="breadcrumb-item" aria-current="page">
-                <?php
-                    echo (isset($row))? $row["name"]: "NAN";
-                ?>
+                Compare
             </li>
         </ol>
         </nav>
@@ -81,12 +40,7 @@ set_selected_item($row);
 
 <div class="container">
 <?php
-
-if(!is_null($row)){
-    include __DIR__.'/../layout/components/_item.php';
-}else{
-    include __DIR__.'/../layout/components/_404.php';
-}
+    include __DIR__.'/../layout/components/_compare.php';
 ?>
 </div>
 

@@ -234,3 +234,39 @@
 .row-banner-contact-us {
     height: 28rem!important;
 }
+
+.relate h3 {
+    padding-top: 4rem;
+}
+.relate-container .product-item__brands {font-size: 1.8rem;}
+.relate-container .product-item__name {font-size: 1rem;min-height: auto;}
+.relate-container .product-item__info {font-size: 1.8rem;display: none;}
+.relate-container .stars {font-size: 1rem;padding: 0;}
+.relate-container h3 {font-size: 1rem;padding: .5rem 1rem;position: relative;}
+
+.relate-container h3 a .btn {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    font-size: 1.1rem;
+    top: 50px;
+    left: calc(50% - 4.5rem);
+}
+.relate-container h3 a:hover .btn {
+    display: unset;
+}
+
+.compare-item__container td {
+    text-align: left;
+    padding: 1rem 2rem;
+}
+.compare-item__container td:first-child {
+    font-weight: bold;
+    font-size: 1.5rem;
+    vertical-align: top;
+    padding: 1rem;
+}
+.compare-item__container .brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
