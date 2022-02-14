@@ -11,7 +11,7 @@ function get_category($conn){
         ON pc.id = psc.parent
         LEFT JOIN `product_item` as pi
         ON psc.id = pi.subcategory
-        WHERE pi.type='".$SELECTED_TYPE."'
+        WHERE pc.type='".$SELECTED_TYPE."'
         GROUP BY pc.name";
     $result = $conn->query($sql);
     $total = 0;
@@ -25,10 +25,11 @@ function get_subcategory($conn, $selected_category){
     global $SELECTED_TYPE;
     $ls = array();
     $sql = "SELECT psc.name as name, psc.id as value, COUNT(pi.id) as count FROM `product_subcategory` as psc
+        JOIN `product_category` as pc ON pc.id = psc.parent
         LEFT JOIN `product_item` as pi
         ON psc.id = pi.subcategory
         WHERE psc.parent = '".$selected_category."'
-        AND pi.type='".$SELECTED_TYPE."'
+        AND pc.type='".$SELECTED_TYPE."'
         GROUP BY psc.name;";
     $result = $conn->query($sql);
     while($row=$result->fetch_assoc()){

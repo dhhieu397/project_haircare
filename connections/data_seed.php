@@ -26,57 +26,6 @@ function seed_brand($conn){
     $conn->query($sql);
 }
 
-function seed_category($conn){
-    echo "Seed category\n";
-    $sql = "INSERT INTO product_category (
-        id,
-        name
-    )
-    VALUES
-        (
-            1,
-            'Shampoo'
-        ),
-        (
-            2,
-            'Conditioner'
-        ),
-        (
-            3,
-            'Treatment'
-        )
-    ";
-    $conn->query($sql);
-
-    $sql = "INSERT INTO product_subcategory (
-        name,
-        parent
-    )
-    VALUES
-        (
-            'Hair Colour Shampoo',
-            1
-        ),
-        (
-            'Repair Shampoo',
-            1
-        ),
-        (
-            'Colour Conditioner',
-            2
-        ),
-        (
-            'Volume Conditioner',
-            2
-        ),
-        (
-            'Colour Treatments',
-            3
-        )
-    ";
-    $conn->query($sql);
-}
-
 function seed_type($conn){
     echo "Seed type\n";
     $sql = "INSERT INTO product_type (
@@ -95,6 +44,77 @@ function seed_type($conn){
         (
             3,
             'equipment'
+        )
+    ";
+    $conn->query($sql);
+}
+
+function seed_category($conn){
+    echo "Seed category\n";
+    $sql = "INSERT INTO product_category (
+        id,
+        name,
+        type
+    )
+    VALUES
+        (
+            1,
+            'Shampoo',
+            1
+        ),
+        (
+            2,
+            'Conditioner',
+            1
+        ),
+        (
+            3,
+            'Treatment',
+            2
+        ),
+        (
+            4,
+            'Electrical',
+            3
+        )
+    ";
+    $conn->query($sql);
+
+    $sql = "INSERT INTO product_subcategory (
+        id,
+        name,
+        parent
+    )
+    VALUES
+        (
+            1,
+            'Hair Colour Shampoo',
+            1
+        ),
+        (
+            2,
+            'Repair Shampoo',
+            1
+        ),
+        (
+            3,
+            'Colour Conditioner',
+            2
+        ),
+        (
+            4,
+            'Volume Conditioner',
+            2
+        ),
+        (
+            5,
+            'Colour Treatments',
+            3
+        ),
+        (
+            6,
+            'Hair Clippers',
+            4
         )
     ";
     $conn->query($sql);

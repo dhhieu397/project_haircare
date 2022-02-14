@@ -3,10 +3,10 @@
     <a href="#" class="logo"> <i class="fas fa-air-freshener"></i> hair </a>
     
     <nav class="navbar">
-        <a href="#home">home</a>
+        <a href="javascript:void()" onclick="return navigate('')">home</a>
         <a href="javascript:void()" onclick="return navigate('treatments')">treatments</a>
         <!-- <a href="#remedies">remedies</a> -->
-        <a href="#equipments">equipments</a>
+        <a href="javascript:void()" onclick="return navigate('equipments')">equipments</a>
         <a href="javascript:void()" onclick="return navigate('products')">products</a>
         <!-- <a href="#manufacturers">manufacturers</a> -->
         <!-- <a href="#composition">composition</a> -->

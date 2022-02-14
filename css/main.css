@@ -110,6 +110,35 @@
     display: block;    
 }
 
+.product-item__container {
+    position: relative;
+}
+
+.product-item__container .sold-out {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    /* border: 6px solid red; */
+    padding: 0.5rem;
+    /* border-radius: 4px; */
+    background: red;
+    transform: rotate(-25deg);
+    top: 13rem;
+    left: calc(50% - 7rem);
+    opacity: 0.65;
+}
+
+.product-item__container .sold-out.item {
+    position: unset;
+    opacity: 1;
+    font-size: 2rem;
+    text-align: right;
+    color: white;
+    /* float: right; */
+}
+
 .no-decoration {
     text-decoration: none!important;
 }

@@ -67,7 +67,7 @@ set_selected_item($row);
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="" onclick="return navigate('/')">Home</a></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a href="" onclick="return navigate('treatments')">Treatments</a>
+                <a href="" onclick="return navigate('equipments')">Equipments</a>
             </li>
             <li class="breadcrumb-item" aria-current="page">
                 <?php

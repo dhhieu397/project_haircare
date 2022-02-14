@@ -15,23 +15,23 @@ function query_items($conn){
     global $FILTER_Brand;
 
     $sql = "SELECT pi.name as name, pi.img as img, pi.code as code, 
-                   pi.price, pi.real_price, pi.rate, pi.rate_number,
+                   pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total,
                    pb.name as brand, ps.name as size
         FROM product_item as pi
-        JOIN product_brand as pb
-        ON pb.id = pi.brand
-        JOIN product_size as ps
-        ON ps.id = pi.size";
+        JOIN `product_subcategory` psc ON psc.id = pi.subcategory
+        JOIN `product_category` pc ON pc.id = psc.parent
+        JOIN product_brand as pb ON pb.id = pi.brand
+        JOIN product_size as ps ON ps.id = pi.size";
 
     #build filter
     $filter = array();
     if(isset($SELECTED_TYPE)){
-        array_push($filter, "pi.type='".$SELECTED_TYPE."'");
+        array_push($filter, "pc.type='".$SELECTED_TYPE."'");
     }
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
-        $sql .= " JOIN product_subcategory as psc
-                ON pi.subcategory = psc.id
-                ";
+        // $sql .= " JOIN product_subcategory as psc
+        //         ON pi.subcategory = psc.id
+        //         ";
         array_push($filter, "psc.parent = '".$FILTER_Category."'");
     }
     if(isset($FILTER_SubCategory)){
@@ -126,8 +126,9 @@ function format_star($rate, $star){
         echo '
             <div class="col-xs-12 col-md-6 col-lg-4 table-items product-item__container">
                 <h3 class="product-item__title box">
-                    <a href="" onclick="return false;" class="fas fa-heart"></a>
+                    <a href="" onclick="return false;" class="fas fa-heart" style="display: none"></a>
                     <a class="no-decoration w-100 d-block" href="" onclick="return onClickItem(\''.$item["code"].'\')">
+                        <span class="sold-out" style="'.($item["total"]<=0?'':'display:none').'">Sold out</span>
                         <span class="product-item__thumbnail d-block">
                             <img class="center" src="'.$IMAGE_ROOT.$item["img"].'" alt="" width="246px" height="246px">
                         </span>

@@ -15,7 +15,7 @@ function format_star($rate, $star){
 }
 
 ?>
-<div class="row">
+<div class="row product-item__container">
     <div class="col-6">
         <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -67,7 +67,11 @@ function format_star($rate, $star){
                             <i class="fas '.format_star((float)$row["rate"], 3).'"></i>
                             <i class="fas '.format_star((float)$row["rate"], 4).'"></i>
                         <span> ('.$row["rate_number"].') </span>
-                        <div class="price">$'.$row["price"].' <span>$'.$row["real_price"].'</span></div>';
+                        <div class="price">$'.$row["price"].' <span>$'.$row["real_price"].'</span>
+                        </div>
+                        '.$row["total"].'
+                        <span class="sold-out item" style="'.($row["total"]<=0?'':'display:none').'">Sold out</span>
+            ';
                 ?>
             </div>
             <div class="description pt-4">

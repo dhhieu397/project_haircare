@@ -9,17 +9,18 @@ function get_brand($conn){
     global $FILTER_SubCategory;
     
     $sql = "SELECT pb.name as name, pb.id as value, COUNT(pi.id) as count FROM `product_brand` as pb
-            JOIN `product_item` pi
-            ON pb.id = pi.brand";
+            JOIN `product_item` pi ON pb.id = pi.brand
+            JOIN `product_subcategory` psc ON psc.id = pi.subcategory
+            JOIN `product_category` pc ON pc.id = psc.parent";
     #build filter
     $filter = array();
     if(isset($SELECTED_TYPE)){
-        array_push($filter, "pi.type='".$SELECTED_TYPE."'");
+        array_push($filter, "pc.type='".$SELECTED_TYPE."'");
     }
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
-        $sql .= " JOIN product_subcategory as psc
-                ON pi.subcategory = psc.id
-                ";
+        // $sql .= " JOIN product_subcategory as psc
+        //         ON pi.subcategory = psc.id
+        //         ";
         array_push($filter, "psc.parent = '".$FILTER_Category."'");
     }
     if(isset($FILTER_SubCategory)){
