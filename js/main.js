@@ -1,5 +1,12 @@
 var BASE_HREF = "/project_haircare/";
 
+var dir = function(p){
+    if(p && p.endsWith(".php")){
+        return p.split('/').slice(0, -1).join('/');
+    }
+    return "";
+}
+
 var doQueryProduct = function(){
     console.log(QUERY);
     var params = {
@@ -10,21 +17,22 @@ var doQueryProduct = function(){
         'page': QUERY.page,
     }
     var params = new URLSearchParams(QUERY);
-    window.location.href = BASE_HREF + "products/?" + params.toString();
+    window.location.href = CURRENT_URL + "?" + params.toString();
 }
 
 var onClickItem = function(item){
+    console.log(CURRENT_URL);
     var params = new URLSearchParams({
         'item': item,
     });
-    window.location.href = BASE_HREF + "products/item.php?" + params.toString();
+    window.location.href = dir(CURRENT_URL) + "/item.php?" + params.toString();
     return false;
 }
 
 var navigate = function(path){
     console.log(BASE_HREF + path)
     if(path[0] == '/'){
-        window.location.href = '/';
+        window.location.href = path;
     }else{
         window.location.href = BASE_HREF + path;
     }

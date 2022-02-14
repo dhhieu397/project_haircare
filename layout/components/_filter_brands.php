@@ -1,9 +1,10 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
-include_once __DIR__ . '/../model.php';
+include_once __DIR__ . '/../../model.php';
 
 
 function get_brand($conn){
+    global $SELECTED_TYPE;
     global $FILTER_Category;
     global $FILTER_SubCategory;
     
@@ -12,6 +13,9 @@ function get_brand($conn){
             ON pb.id = pi.brand";
     #build filter
     $filter = array();
+    if(isset($SELECTED_TYPE)){
+        array_push($filter, "pi.type='".$SELECTED_TYPE."'");
+    }
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
         $sql .= " JOIN product_subcategory as psc
                 ON pi.subcategory = psc.id

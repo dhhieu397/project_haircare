@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../model.php';
+include_once __DIR__ . '/../../model.php';
 $MAX_PAGE_SHOWED = 4;
 
 $page_count = $FILTER_page_count;
@@ -47,7 +47,7 @@ if($page<=$half){
                     </li>';
                 }
             }
-            if($page < $page_count-1){
+            if($start_+$page_showed < $page_count){
                 echo '<li class="page-item">
                     <a class="page-link" href="javascript:void()" aria-label="Next"
                             onclick="return onPageChange('.($page_showed).')">

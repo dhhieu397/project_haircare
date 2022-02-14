@@ -422,7 +422,7 @@
 
 <!-- banner section starts  -->
 
-<section class="banner">
+<!-- <section class="banner">
 
     <div class="row-banner">
         <div class="content">
@@ -460,7 +460,7 @@
         </div>
     </div>
 
-</section>
+</section> -->
 
 <!-- banner section ends -->
 
@@ -531,7 +531,7 @@
 
 <!-- order section starts  -->
 
-<section class="order" id="order">
+<!-- <section class="order" id="order">
 
     <div class="heading">
         <span>order now</span>
@@ -605,13 +605,13 @@
 
     </form>
 
-</section>
+</section> -->
 
 <!-- order section ends -->
 
 <!-- blogs section starts  -->
 
-<section class="blogs" id="blogs">
+<section style="display: none" class="blogs" id="blogs">
 
     <div class="heading">
         <span>our blogs</span>
@@ -679,7 +679,7 @@
 
 <!-- footer section starts  -->
 
-<section class="footer">
+<!-- <section class="footer">
 
     <div class="newsletter">
         <h3>newsletter</h3>
@@ -744,7 +744,7 @@
         
     </div>
 
-</section>
+</section> -->
 
 <!-- footer section ends -->
 

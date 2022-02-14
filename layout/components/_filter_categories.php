@@ -1,16 +1,18 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
-include_once __DIR__ . '/../model.php';
+include_once __DIR__ . '/../../model.php';
 
 
 function get_category($conn){
+    global $SELECTED_TYPE;
     $ls = array();
     $sql = "SELECT pc.name as name, pc.id as value, COUNT(pi.id) as count FROM `product_category` as pc
         JOIN `product_subcategory` as psc
         ON pc.id = psc.parent
         LEFT JOIN `product_item` as pi
         ON psc.id = pi.subcategory
-        GROUP BY pc.name;";
+        WHERE pi.type='".$SELECTED_TYPE."'
+        GROUP BY pc.name";
     $result = $conn->query($sql);
     $total = 0;
     while($row=$result->fetch_assoc()){
@@ -20,11 +22,13 @@ function get_category($conn){
 }
 
 function get_subcategory($conn, $selected_category){
+    global $SELECTED_TYPE;
     $ls = array();
     $sql = "SELECT psc.name as name, psc.id as value, COUNT(pi.id) as count FROM `product_subcategory` as psc
         LEFT JOIN `product_item` as pi
         ON psc.id = pi.subcategory
         WHERE psc.parent = '".$selected_category."'
+        AND pi.type='".$SELECTED_TYPE."'
         GROUP BY psc.name;";
     $result = $conn->query($sql);
     while($row=$result->fetch_assoc()){

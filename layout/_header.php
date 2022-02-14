@@ -4,11 +4,11 @@
     
     <nav class="navbar">
         <a href="#home">home</a>
-        <a href="#treatments">treatments</a>
+        <a href="javascript:void()" onclick="return navigate('treatments')">treatments</a>
         <!-- <a href="#remedies">remedies</a> -->
         <a href="#equipments">equipments</a>
         <a href="javascript:void()" onclick="return navigate('products')">products</a>
-        <a href="#manufacturers">manufacturers</a>
+        <!-- <a href="#manufacturers">manufacturers</a> -->
         <!-- <a href="#composition">composition</a> -->
         <a href="#gallery">gallery</a>
         <!-- <a href="#latestdevelopments">latest developments</a> -->

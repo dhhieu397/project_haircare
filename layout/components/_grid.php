@@ -1,11 +1,12 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
-include_once __DIR__ . '/../model.php';
-include __DIR__ . '/../consts.php';
+include_once __DIR__ . '/../../model.php';
+include __DIR__ . '/../../consts.php';
 
 
 function query_items($conn){
-    global $SORT_REL, $SORT_LATEST, $SORT_NAME_ASC, $SORT_NAME_DESC;
+    global $SELECTED_TYPE;
+    global $SORTS;
     global $FILTER_page_size;
     global $FILTER_page_number;
     global $FILTER_Sort;
@@ -24,6 +25,9 @@ function query_items($conn){
 
     #build filter
     $filter = array();
+    if(isset($SELECTED_TYPE)){
+        array_push($filter, "pi.type='".$SELECTED_TYPE."'");
+    }
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
         $sql .= " JOIN product_subcategory as psc
                 ON pi.subcategory = psc.id
@@ -46,11 +50,11 @@ function query_items($conn){
 
     # build sort
     $sort = NULL;
-    if(isset($FILTER_Sort) && $FILTER_Sort == $SORT_LATEST){
+    if(isset($FILTER_Sort) && $FILTER_Sort == $SORTS->LATEST){
         $sort = "pi.creation_date DESC";
-    }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORT_NAME_ASC){
+    }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORTS->NAME_ASC){
         $sort = "pi.name ASC";
-    }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORT_NAME_DESC){
+    }else if (isset($FILTER_Sort) && $FILTER_Sort == $SORTS->NAME_DESC){
         $sort = "pi.name DESC";
     }
     // echo $sql;
@@ -64,6 +68,7 @@ function query_items($conn){
             $sql .= " SORT ".$sort;
         }
         // echo $sql;
+        $result = $conn->query($sql);
         while($row=$result->fetch_assoc()){
             array_push($ls, $row);
         }

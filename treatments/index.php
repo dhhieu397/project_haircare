@@ -21,7 +21,7 @@
 <body>
     <?php
         include __DIR__."/../model.php";
-        set_selected_type($TYPES->PRODUCT);
+        set_selected_type($TYPES->TREATMENT);
     ?>
     <?php include __DIR__."/../layout/_header.php"; ?>
 
@@ -29,9 +29,9 @@
 
         <div class="row-banner2 banner-product">
             <div class="content2">
-                <h3>SHOP <br> Products</h3>
-                <p>Explore our range of <br>professional hair care products<br> formulated for all hair types.</p>
-                <a href="" onclick="return navigate('products#product-content')" class="btn">Our products</a>
+                <h3>SHOP <br> TREATMENT</h3>
+                <p> With our range of expertly formulated<br> hair treatments, you can improve<br> the quality, texture and health<br> of your clients' hair.</p>
+                <a href="" onclick="return navigate(CURRENT_URL+'#treatment-content')" class="btn">Our treatments</a>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
         include_once __DIR__.'/../model.php';
     ?>
 
-    <section id="product-content" class="page-content">
+    <section id="treatment-content" class="page-content">
         <!-- <div class="top-nav p-2 text-secondary small-text">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -75,7 +75,7 @@
                 brand: [" . join(',', $FILTER_Brand) ."],
                 sort: '" . (is_null($FILTER_Sort)?'undefined': $FILTER_Sort) ."',
                 page: '" . (is_null($FILTER_page_number)?0: $FILTER_page_number) ."',
-            }; \n
+            };\n
             console.log(QUERY);\n
             var CURRENT_URL='".$_SERVER['PHP_SELF']."';\n";
         ?>

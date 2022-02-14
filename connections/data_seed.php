@@ -40,6 +40,10 @@ function seed_category($conn){
         (
             2,
             'Conditioner'
+        ),
+        (
+            3,
+            'Treatment'
         )
     ";
     $conn->query($sql);
@@ -64,6 +68,33 @@ function seed_category($conn){
         (
             'Volume Conditioner',
             2
+        ),
+        (
+            'Colour Treatments',
+            3
+        )
+    ";
+    $conn->query($sql);
+}
+
+function seed_type($conn){
+    echo "Seed type\n";
+    $sql = "INSERT INTO product_type (
+        id,
+        name
+    )
+    VALUES
+        (
+            1,
+            'product'
+        ),
+        (
+            2,
+            'treatment'
+        ),
+        (
+            3,
+            'equipment'
         )
     ";
     $conn->query($sql);

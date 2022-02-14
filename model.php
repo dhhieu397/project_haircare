@@ -1,6 +1,8 @@
 <?php
 
-$FILTER_page_size = 18;
+include __DIR__.'/consts.php';
+
+$FILTER_page_size = $PAGE_SIZE;
 $FILTER_page_number = 0;
 $FILTER_page_count = 0;
 
@@ -17,14 +19,27 @@ if($FILTER_Brand != ''){
 //     $FILTER_Brand = array(0);
 // }
 
-$SORT_REL = "relevance";
-$SORT_LATEST = "latest";
-$SORT_NAME_ASC = "name_asc";
-$SORT_NAME_DESC = "name_desc";
+// $SORT_REL = "relevance";
+// $SORT_LATEST = "latest";
+// $SORT_NAME_ASC = "name_asc";
+// $SORT_NAME_DESC = "name_desc";
+$SORTS = (object) array(
+    "REL"=>"relevance",
+    "LATEST"=>"latest",
+    "NAME_ASC"=>"name_asc",
+    "NAME_DESC"=>"name_desc"
+);
 
-$FILTER_Sort = (isset($_GET["sort"]) && $_GET["sort"] != 'undefined')? $_GET["sort"]: $SORT_REL;
+$TYPES = (object) array(
+    "PRODUCT"=> 1,
+    "TREATMENT"=> 2,
+    "EQUIPMENT"=>3
+);
+
+$FILTER_Sort = (isset($_GET["sort"]) && $_GET["sort"] != 'undefined')? $_GET["sort"]: $SORTS->REL;
 
 $SELECTED_ITEM = NULL;
+$SELECTED_TYPE = NULL;
 
 function set_selected_item($val){
     global $SELECTED_ITEM;
@@ -34,5 +49,10 @@ function set_selected_item($val){
 function set_page_count($val){
     global $FILTER_page_count;
     $FILTER_page_count = $val;
+}
+
+function set_selected_type($val){
+    global $SELECTED_TYPE;
+    $SELECTED_TYPE = $val;
 }
 ?>

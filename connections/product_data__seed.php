@@ -1,10 +1,10 @@
 <?php
 
 include ('./connect.php');
-include ('./models.php');
-include ('./model_seed.php');
+include ('./table.php');
+include ('./data_seed.php');
 
-function seed_item_1($conn){
+function seed_item_1($conn, $id){
     echo "Seed item 1";
     
     $sql = "
@@ -16,6 +16,7 @@ function seed_item_1($conn){
         product_infomation,
         ingredient,
         img,
+        type,
         subcategory,
         brand,
         sku,
@@ -27,7 +28,7 @@ function seed_item_1($conn){
         rate_number
     )
     VALUES (
-        1,
+        ".$id.",
 
         'evo--be-silver-shampoo-500ml',
 
@@ -57,6 +58,7 @@ function seed_item_1($conn){
         'product_thumbnail_53376.png',
         1,
         1,
+        1,
         '53376',
         4,
         '2022-02-02',
@@ -70,15 +72,15 @@ function seed_item_1($conn){
     $sql = "
     INSERT INTO product_item_image (product, img)
     VALUES
-        (1, 'product_preview__53376_1.png'),
-        (1, 'product_preview__53376_2.png');
+        (".$id.", 'product_preview__53376_1.png'),
+        (".$id.", 'product_preview__53376_2.png');
     ";
     if($conn->query($sql) !== True){
         echo "Error: ".$conn->error."\n";
     }
 }
 
-function seed_item_2($conn){
+function seed_item_2($conn, $id){
     echo "Seed item 2";
     
     $sql = "
@@ -90,6 +92,7 @@ function seed_item_2($conn){
         product_infomation,
         ingredient,
         img,
+        type,
         subcategory,
         brand,
         sku,
@@ -101,7 +104,7 @@ function seed_item_2($conn){
         rate_number
     )
     VALUES (
-        2,
+        ".$id.",
 
         'evo--ritual-salvation-repairing-shampoo-300ml',
 
@@ -130,7 +133,7 @@ function seed_item_2($conn){
         </p>',
 
         'product_thumbnail_39219.png',
-
+        1,
         1,
         3,
         '39219',
@@ -147,8 +150,86 @@ function seed_item_2($conn){
     $sql = "
     INSERT INTO product_item_image (product, img)
     VALUES
-        (2, 'product_preview__39219_1.png'),
-        (2, 'product_preview__39219_2.png');
+        (".$id.", 'product_preview__39219_1.png'),
+        (".$id.", 'product_preview__39219_2.png');
+    ";
+    if($conn->query($sql) !== True){
+        echo "Error: ".$conn->error."\n";
+    }
+}
+
+function seed_item_3($conn, $id){
+    echo "Seed item 3";
+    
+    $sql = "
+    INSERT INTO product_item (
+        id,
+        code,
+        name,
+        description,
+        product_infomation,
+        ingredient,
+        img,
+        type,
+        subcategory,
+        brand,
+        sku,
+        size,
+        creation_date,
+        price,
+        real_price,
+        rate,
+        rate_number
+    )
+    VALUES (
+        ".$id.",
+
+        'evo--ritual-salvation-repairing-shampoo-300ml',
+
+        'RITUAL SALVATION REPAIRING SHAMPOO',
+
+        'A reparative, sulphate-free shampoo to repair and strengthen weak, colour-treated hair. Greatly improve hair quality with Ritual Salvation Shampoo by Evo.',
+
+        '<ul>
+        <li>Deeply reparative shampoo with gentle cleansing action</li>
+        <li>Repairs damaged, brittle hair while locking in colour vibrancy</li>
+        <li>Hydrolyzed Quinoa strengthens and protects while retaining colour</li>
+        <li>Panthenol locks in moisture and adds shine</li>
+        <li>Floral, fruity, exotic and juicy fragrance notes</li>
+        <li>Vegan and cruelty free</li>
+        <li>Made without sulphates, parabens or gluten</li>
+        <li>Recommended for weak, brittle, colour-treated hair</li>
+        </ul>
+        <p>The recommended retail price (RRP) for this item is $38.00.</p>
+        <p>Evo Ritual Salvation Repairing Shampoo dramatically improves the condition of damaged hair by adding softness and shine while reducing frizz and detangling locks. Hydrolyzed Quinoa strengthens and protects the hair fibre while locking in colour vibrancy for optimal retention. Panthenol conditions and moisturises while increasing the hair\'s natural shine. Sulphate-free cleansers are gentle on the hair to help reduce colour fading for long-lasting, luminous tones. This shampoo features floral, fruity, exotic and juicy fragrance notes. Use in conjunction with Evo Ritual Salvation Repairing Shampoo for optimal results.</p>',
+
+        '<ul>
+        <li>Panthenol</li> <li>Quinoa</li>
+        </ul>
+        <p>
+        <b>Full ingredients:</b> Aqua, Glycol Stearate, Sodium Lauroyl Methyl Isethionate, Cocamidopropyl Betaine, Methyl Gluceth-20, Peg -12 Dimethicone, Peg - 150 Distearate, Polyquaternium-10, Parfum, Phenoxyethanol, Panthenol, Benzophenone-4,Hydrolyzed Quinoa,Trideceth-9 Pg-Amodimethicone, Benzoic Acid,Dehydroacetic Acid, Butylene Glycol,Trideceth-12,Aloe Barbadensis Leaf Extract, Ethylhexylglycerin, Potassium Sorbate
+        </p>',
+
+        'product_thumbnail_39219.png',
+        2,
+        5,
+        3,
+        '39219',
+        3,
+        '2022-02-02',
+        60, 75, 3.8, 32
+    );
+    ";
+    // echo $sql;
+    if($conn->query($sql) !== True){
+        echo "Error: ".$conn->error."\n";
+    }
+
+    $sql = "
+    INSERT INTO product_item_image (product, img)
+    VALUES
+        (".$id.", 'product_preview__39219_1.png'),
+        (".$id.", 'product_preview__39219_2.png');
     ";
     if($conn->query($sql) !== True){
         echo "Error: ".$conn->error."\n";
@@ -157,9 +238,13 @@ function seed_item_2($conn){
 
 drop_tables($dbc);
 prepare_tables($dbc);
+seed_type($dbc);
 seed_brand($dbc);
 seed_category($dbc);
 seed_size($dbc);
-seed_item_1($dbc);
-seed_item_2($dbc);
+seed_item_1($dbc, 1);
+seed_item_2($dbc, 2);
+for($i=3;$i<14;$i++){
+    seed_item_3($dbc, $i);
+}
 ?>

@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/../model.php';
-include_once __DIR__ . '/../consts.php';
+include_once __DIR__ . '/../../model.php';
+include_once __DIR__ . '/../../consts.php';
 
 $row = $SELECTED_ITEM;
 

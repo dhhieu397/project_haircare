@@ -20,6 +20,9 @@ function drop_tables($conn){
     if($conn->query("DROP TABLE product_size;") !== True){
         echo "Error: " . $conn->error . "\n";
     };
+    if($conn->query("DROP TABLE product_type;") !== True){
+        echo "Error: " . $conn->error . "\n";
+    };
 }
 
 function prepare_tables($conn){
@@ -28,6 +31,15 @@ function prepare_tables($conn){
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(30) NOT NULL,
         description TEXT NOT NULL
+    )";
+    if($conn->query($sql) !== True){
+        echo "Error: ". $conn->error ."\n";
+    };
+
+    echo "Create table 'product_type'\n";
+    $sql = "CREATE TABLE product_type (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(30) NOT NULL
     )";
     if($conn->query($sql) !== True){
         echo "Error: ". $conn->error ."\n";
@@ -75,6 +87,7 @@ function prepare_tables($conn){
         product_infomation TEXT NOT NULL,
         ingredient TEXT NOT NULL,
         img VARCHAR(60) NOT NULL,
+        type INT(6) UNSIGNED,
         subcategory INT(6) UNSIGNED,
         brand INT(6) UNSIGNED,
         size INT(6) UNSIGNED,
@@ -85,6 +98,7 @@ function prepare_tables($conn){
         rate_number INT(6) UNSIGNED,
         creation_date DATE NOT NULL,
         CONSTRAINT FK_product_subcategory FOREIGN KEY (subcategory) REFERENCES product_subcategory(id),
+        CONSTRAINT FK_product_type FOREIGN KEY (type) REFERENCES product_type(id),
         CONSTRAINT FK_product_brand FOREIGN KEY (brand) REFERENCES product_brand(id),
         CONSTRAINT FK_product_size FOREIGN KEY (size) REFERENCES product_size(id)
     )";
