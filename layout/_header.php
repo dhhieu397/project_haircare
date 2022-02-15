@@ -1,6 +1,6 @@
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-air-freshener"></i> hair </a>
+    <a href="javascript:void()" onclick="return navigate('')" class="logo"> <i class="fas fa-air-freshener"></i> hair </a>
     
     <nav class="navbar">
         <a href="javascript:void()" onclick="return navigate('')">home</a>
