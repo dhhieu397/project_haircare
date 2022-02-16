@@ -4,16 +4,16 @@
 <?php
 include_once __DIR__ . '/../../model.php';
 
-$selected = $FILTER_Sort == $SORT_REL ? 'selected': '';
+$selected = $FILTER_Sort == $SORTS->REL ? 'selected': '';
 echo '<option value="relevance" '.$selected.'>Relevance</option>';
 
-$selected = $FILTER_Sort == $SORT_LATEST ? 'selected': '';
+$selected = $FILTER_Sort == $SORTS->LATEST ? 'selected': '';
 echo '<option value="latest" '.$selected.'>Latest</option>';
 
-$selected = $FILTER_Sort == $SORT_NAME_ASC ? 'selected': '';
+$selected = $FILTER_Sort == $SORTS->NAME_ASC ? 'selected': '';
 echo '<option value="name_asc" '.$selected.'>Name (A-Z)</option>';
 
-$selected = $FILTER_Sort == $SORT_NAME_DESC ? 'selected': '';
+$selected = $FILTER_Sort == $SORTS->NAME_DESC ? 'selected': '';
 echo '<option value="name_desc" '.$selected.'>Name (Z-A)</option>';
 ?>
 

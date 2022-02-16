@@ -7,7 +7,8 @@
 
     <base href="/project_haircare/" target="_blank">
 
-    <title>Complete Responsive Food / Resturant Website Design Tutorial</title>
+    <title>Haircare Website</title>
+    
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

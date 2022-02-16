@@ -63,10 +63,10 @@ function query_items($conn){
     $result = $conn->query($sql);
     $total = mysqli_num_rows($result);
     if($total > 0){
-        $sql .= " LIMIT ".$FILTER_page_size." OFFSET ".($FILTER_page_size*$FILTER_page_number);
         if($sort){
-            $sql .= " SORT ".$sort;
+            $sql .= " ORDER BY ".$sort;
         }
+        $sql .= " LIMIT ".$FILTER_page_size." OFFSET ".($FILTER_page_size*$FILTER_page_number);
         // echo $sql;
         $result = $conn->query($sql);
         while($row=$result->fetch_assoc()){
