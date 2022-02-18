@@ -1,10 +1,12 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
 include __DIR__ . '/../../consts.php';
 
 
 function query_items($conn){
+    // return items list by user's filter
     global $SELECTED_TYPE;
     global $SORTS;
     global $FILTER_page_size;
@@ -29,14 +31,12 @@ function query_items($conn){
         array_push($filter, "pc.type='".$SELECTED_TYPE."'");
     }
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
-        // $sql .= " JOIN product_subcategory as psc
-        //         ON pi.subcategory = psc.id
-        //         ";
         array_push($filter, "psc.parent = '".$FILTER_Category."'");
     }
     if(isset($FILTER_SubCategory)){
         array_push($filter, "pi.subcategory = '".$FILTER_SubCategory."'");
     }
+    // filter by brand only if there are some brands selected but not "All brand" selected
     if(isset($FILTER_Brand) && !empty($FILTER_Brand) && !in_array('0', $FILTER_Brand)){
         $or_q = array();
         foreach($FILTER_Brand as $fb){
@@ -61,8 +61,10 @@ function query_items($conn){
 
     $ls = array();
     $result = $conn->query($sql);
+    // get total rows to show in pagination
     $total = mysqli_num_rows($result);
     if($total > 0){
+        // sort and show items in current page
         if($sort){
             $sql .= " ORDER BY ".$sort;
         }
@@ -80,7 +82,7 @@ $result = query_items($dbc);
 $items = $result["rows"];
 $total_items = $result["total"];
 
-# set total page count
+# set global total page count
 if($total_items == 0){
     set_page_count(0);
 }else{
@@ -88,6 +90,9 @@ if($total_items == 0){
 }
 
 function format_star($rate, $star){
+    // return html format string to view star rate
+    // $rate: rate value (float) in range [0..5]
+    // $star: index of star span, value in [0..4]
     if($rate<$star+0.5){
         return 'fa-star-o-alt';
     }
@@ -155,25 +160,10 @@ function format_star($rate, $star){
             ';
     }
 ?>
-        <!-- <div class="col-4 table-items product-item__container">
-            <h3 class="product-item__title">
-                <a href="">
-                    <span class="product-item__thumbnail">
-                        <img src="" alt="" width="100%" height="200px">
-                    </span>
-                    <span class="product-item__brands">
-                        olaplex
-                    </span>
-                    <span class="product-item__name">
-                        No.4-P
-                    </span>
-                </a>
-                <span class="product-item__info"></span>
-            </h3>
-        </div> -->
     </div>
 
     <div>
+        <!-- Show pagination -->
         <?php include __DIR__ . '/_paginate.php'; ?>
     </div>
 </div>

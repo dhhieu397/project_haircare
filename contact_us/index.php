@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,8 +18,10 @@
 
 <body>
 
+    <!-- Top nav bar -->
     <?php include __DIR__."/../layout/_header.php"; ?>
 
+    <!-- Breadcrumb of page -->
     <section class="page-content">
         <div class="top-nav small-text text-secondary">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -35,6 +36,7 @@
         </div>
     </section>
 
+    <!-- Head banner -->
     <section class="banner2" >
         <div class="row-banner2 row-banner-contact-us banner-contact-us">
             <div class="content2">

@@ -1,9 +1,12 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
 
 
 function get_brand($conn){
+    // return brand list and number of items each
+    // the list include "All brand" option
     global $SELECTED_TYPE;
     global $FILTER_Category;
     global $FILTER_SubCategory;
@@ -12,15 +15,12 @@ function get_brand($conn){
             JOIN `product_item` pi ON pb.id = pi.brand
             JOIN `product_subcategory` psc ON psc.id = pi.subcategory
             JOIN `product_category` pc ON pc.id = psc.parent";
-    #build filter
+    # build filter
     $filter = array();
     if(isset($SELECTED_TYPE)){
         array_push($filter, "pc.type='".$SELECTED_TYPE."'");
     }
     if(is_null($FILTER_SubCategory) && isset($FILTER_Category)){
-        // $sql .= " JOIN product_subcategory as psc
-        //         ON pi.subcategory = psc.id
-        //         ";
         array_push($filter, "psc.parent = '".$FILTER_Category."'");
     }
     if(isset($FILTER_SubCategory)){
@@ -74,6 +74,7 @@ $brand_ls = get_brand($dbc);
 
 <script>
     function onSelectFilterBrand(target){
+        //  build QUERY brand then submit to server
         console.log(target);
         let checkedVals = $('#brand-filter .brand-checkbox:checkbox:checked').map(function() {
             return this.value;

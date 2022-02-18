@@ -1,6 +1,7 @@
 <?php
 
 function drop_tables($conn){
+    // ** Drop all table
     echo "Drop all tables\n";
     if($conn->query("DROP TABLE product_item_image;") !== True){
         echo "Error: " . $conn->error . "\n";
@@ -26,6 +27,7 @@ function drop_tables($conn){
 }
 
 function prepare_tables($conn){
+    // ** Create all table
     echo "Create table 'product_brand'\n";
     $sql = "CREATE TABLE product_brand (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

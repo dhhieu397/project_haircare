@@ -1,5 +1,7 @@
+// Root url to navigate between pages
 var BASE_HREF = "/project_haircare/";
 
+// get parent of path
 var dir = function(p){
     if(p && p.endsWith(".php")){
         return p.split('/').slice(0, -1).join('/');
@@ -8,6 +10,7 @@ var dir = function(p){
 }
 
 var doQueryProduct = function(){
+    // submit filter, sort, pagination changed
     console.log(QUERY);
     var params = {
         'category': QUERY.category,
@@ -21,7 +24,8 @@ var doQueryProduct = function(){
 }
 
 var onClickItem = function(item){
-    console.log(CURRENT_URL);
+    // navigate to item detail
+    // console.log(CURRENT_URL);
     var params = new URLSearchParams({
         'item': item,
     });
@@ -30,6 +34,7 @@ var onClickItem = function(item){
 }
 
 var onCompareItem = function(item, item_compare){
+    // navigate to item comparing page
     var params = new URLSearchParams({
         'item': item,
         'item_compare': item_compare,
@@ -39,7 +44,8 @@ var onCompareItem = function(item, item_compare){
 }
 
 var navigate = function(path){
-    console.log(BASE_HREF + path)
+    // navigate to path
+    // console.log(BASE_HREF + path)
     if(path[0] == '/'){
         window.location.href = path;
     }else{

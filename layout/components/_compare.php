@@ -2,9 +2,13 @@
 
 include __DIR__ . '/../../connections/connect.php';
 include __DIR__ . '/../../consts.php';
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
 
 function format_star($rate, $star){
+    // return html format string to view star rate
+    // $rate: rate value (float) in range [0..5]
+    // $star: index of star span, value in [0..4]
     if($rate<$star+0.5){
         return 'fa-star-o-alt';
     }
@@ -15,6 +19,7 @@ function format_star($rate, $star){
 }
 
 function get_item($conn, $code){
+    // get item by item's unique code
     $sql = "SELECT pi.id, pi.name, pi.description, pi.product_infomation, pi.ingredient, pi.sku, pi.img,
                    pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total, pi.guide, pi.subcategory,
                    pb.name as brand, pb.description as brand_detail, ps.name as size

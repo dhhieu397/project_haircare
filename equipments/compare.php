@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,8 +19,10 @@
 
 <body>
 
+<!-- Top Nav bar of page -->
 <?php include __DIR__."/../layout/_header.php"; ?>
 
+<!-- Breadscrumb of page -->
 <section class="page-content">
     <div class="top-nav p-2 small-text text-secondary">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -39,6 +40,7 @@
 </section>
 
 <div class="container">
+    <!-- Compare item template -->
 <?php
     include __DIR__.'/../layout/components/_compare.php';
 ?>
@@ -46,6 +48,7 @@
 
 <script>
     <?php
+        // current url of page, use to navigate between pages
         echo "var CURRENT_URL='".$_SERVER['PHP_SELF']."';\n";
     ?>
 </script>

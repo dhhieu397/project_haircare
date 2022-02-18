@@ -1,11 +1,15 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
 include_once __DIR__ . '/../../consts.php';
 
 $row = $SELECTED_ITEM;
 
 function format_star($rate, $star){
+    // return html format string to view star rate
+    // $rate: rate value (float) in range [0..5]
+    // $star: index of star span, value in [0..4]
     if($rate<$star+0.5){
         return 'fa-star-o-alt';
     }
@@ -16,6 +20,9 @@ function format_star($rate, $star){
 }
 
 function get_relate($conn, $id, $subcategory, $price, $limit){
+    // return items that related to current item
+    // select maximum 6 items are in the same subcategory, and closed to selected item's price
+    // and except selected item.
     $ls = array();
     $sql = $sql = "SELECT pi.name as name, pi.img as img, pi.code as code, 
                         pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total,
@@ -70,6 +77,7 @@ $relate_items = get_relate($dbc, $row["id"], $row["subcategory"], $row["price"],
         <div class="row relate">
             <h3>Related Items</h3>
             <?php
+                // show nodata if found no related items
                 if(empty($relate_items)){
                     echo "<span style='padding-left:1rem'>No data</span>";
                 }

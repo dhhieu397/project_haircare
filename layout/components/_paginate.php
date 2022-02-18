@@ -1,11 +1,15 @@
 <?php
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
+
+// MAXIMUM NUMBER OF PAGES
 $MAX_PAGE_SHOWED = 4;
 
 $page_count = $FILTER_page_count;
 $page_showed = min($MAX_PAGE_SHOWED, $page_count);
 $page = $FILTER_page_number;
 $half = $page_showed - intdiv($page_showed, 2);
+// Find page number range to render
 if($page<=$half){
     $start_ = 0;
 }else if($page_count - $page <=$half){
@@ -68,6 +72,7 @@ if($page<=$half){
 
 <script>
     var onPageChange = function(page){
+        // update query and submit to server
         if(QUERY){
             QUERY["page"] = page;
         }

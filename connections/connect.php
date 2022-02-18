@@ -1,14 +1,14 @@
 <?php
+// ** Database connection config
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "haircare";
+// ** End database connection
 
-$product_brand_table = "product_brand";
-$product_category_table = "product_category";
-$product_subcategory_table = "product_subcategory";
-$product_item_table = "product_item";
 
+// ** Create connection to DB
+// $dbc is connection object
 // open connection to mysql server:
 $dbc = mysqli_connect($servername, $username, $password);
 if (!$dbc)
@@ -38,4 +38,5 @@ if (!$db_selected)
 {
 	// echo "Database Selected\n";
 }
+// ** 
 ?>

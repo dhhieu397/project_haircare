@@ -1,9 +1,11 @@
 <?php
 include __DIR__ . '/../../connections/connect.php';
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
 
 
 function get_category($conn){
+    // return category list and number of items each
     global $SELECTED_TYPE;
     $ls = array();
     $sql = "SELECT pc.name as name, pc.id as value, COUNT(pi.id) as count FROM `product_category` as pc
@@ -22,6 +24,7 @@ function get_category($conn){
 }
 
 function get_subcategory($conn, $selected_category){
+    // return category list and number of items each
     global $SELECTED_TYPE;
     $ls = array();
     $sql = "SELECT psc.name as name, psc.id as value, COUNT(pi.id) as count FROM `product_subcategory` as psc
@@ -38,27 +41,14 @@ function get_subcategory($conn, $selected_category){
     return $ls;
 }
 
-function get_category_item($conn, $selected_category){
-    $sql = "SELECT name FROM `product_category`
-            WHERE id = '".$selected_category."';";
-    $result = $conn->query($sql);
-    $total = 0;
-    while($row=$result->fetch_assoc()){
-        return $row;
-    }
-}
-
 $category_ls = get_category($dbc);
 $subcategory_ls = NULL;
 $selected_category = $FILTER_Category;
 $selected_subcategory = $FILTER_SubCategory;
+// select subcategory only if there is a category selected
 if(!is_null($selected_category)){
     $subcategory_ls = get_subcategory($dbc, $selected_category);
 }
-// if(is_null($selected_subcategory) && isset($subcategory_ls[0])){
-//     $selected_subcategory = $subcategory_ls[0]["value"];
-//     $FILTER_SubCategory = $selected_subcategory;
-// }
 ?>
 <div class="flex-shrink-0 pt-3 pb-1 bg-white border-bottom" style="width: 100%;">
     <ul class="list-unstyled ps-0">
@@ -71,6 +61,7 @@ if(!is_null($selected_category)){
                 <?php 
                     foreach($category_ls as $item){
                         if(isset($selected_category) && $selected_category == $item["value"]){
+                            // render category
                             $selected = !isset($selected_subcategory)?'selected': '';
                             echo '<li>';
                             echo '<a href="javascript:void()" 
@@ -78,6 +69,7 @@ if(!is_null($selected_category)){
                                         class="link-dark rounded '.$selected.'">'
                                 .$item["name"].' ('.$item["count"].')'.
                             '</a><ul class="sub">';
+                            // return subcategory if there is a category selected
                             foreach($subcategory_ls as $item){
                                 $selected = $selected_subcategory == $item["value"]?'selected': '';
                                 echo '<li><a href="javascript:void()" 
@@ -88,6 +80,7 @@ if(!is_null($selected_category)){
                             }
                             echo '</ul></li>';
                         }else{
+                            // return only category list
                             echo '<li><a href="javascript:void()"
                                         onclick="return onSelectFilterCategory('.$item["value"].')"
                                         class="link-dark rounded">'
@@ -104,6 +97,7 @@ if(!is_null($selected_category)){
 
 <script>
     function onSelectFilterCategory(category){
+        // build query and submit to server
         if(QUERY){
             QUERY["subcategory"] = undefined;
             QUERY["category"] = category;
@@ -114,6 +108,7 @@ if(!is_null($selected_category)){
     }
 
     function onSelectFilterSubCategory(subcategory){
+        // build query and submit to server
         if(QUERY){
             QUERY["subcategory"] = subcategory;
         }

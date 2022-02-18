@@ -24,9 +24,14 @@
 
 include __DIR__ . '/../connections/connect.php';
 include __DIR__ . '/../consts.php';
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../model.php';
 
 function get_item($conn, $code){
+    // ** paramaters
+    // $conn: database connection, from connections/connect.php
+    // $code: unique code of items
+    // return searched item
     $sql = "SELECT pi.id, pi.name, pi.description, pi.product_infomation, pi.ingredient, pi.sku,
                    pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total, pi.subcategory,
                    pb.name as brand, pb.description as brand_detail, ps.name as size
@@ -36,7 +41,9 @@ function get_item($conn, $code){
             WHERE pi.code = '".$code."'";
     // echo $sql;
     $result = $conn->query($sql);
+    // Get first item
     $row=$result->fetch_assoc();
+    // Get all item's images
     if($row){
         $images = array();
         $sql = "SELECT img FROM product_item_image 
@@ -50,17 +57,21 @@ function get_item($conn, $code){
     return $row;
 }
 
+// Get item by unique code sent from browser
 $SELECTED_ITEM_CODE = isset($_GET["item"])? $_GET["item"]: NULL;
 if($SELECTED_ITEM_CODE){
     $row = get_item($dbc, $SELECTED_ITEM_CODE);
 }else{
     $row = NULL;
 }
+// Set global selected items, to render it in layout/_item.php
 set_selected_item($row);
 ?>
 
+<!-- Page top navbar -->
 <?php include __DIR__."/../layout/_header.php"; ?>
 
+<!-- Breadscrumb of page -->
 <section class="page-content">
     <div class="top-nav p-2 small-text text-secondary">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -83,8 +94,10 @@ set_selected_item($row);
 <?php
 
 if(!is_null($row)){
+    // render item detail if found item
     include __DIR__.'/../layout/components/_item.php';
 }else{
+    // render 404 page if not found item
     include __DIR__.'/../layout/components/_404.php';
 }
 ?>
@@ -92,6 +105,7 @@ if(!is_null($row)){
 
 <script>
     <?php
+        // populate current page url to frontend side
         echo "var CURRENT_URL='".$_SERVER['PHP_SELF']."';\n";
     ?>
 </script>

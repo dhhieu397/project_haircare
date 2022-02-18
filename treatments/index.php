@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,13 +19,16 @@
 
 <body>
     <?php
+        // use global model to populate all query parameters sent from browser
         include __DIR__."/../model.php";
+        // Set type of product items to "equipment", that show only equipments in page.
         set_selected_type($TYPES->TREATMENT);
     ?>
+
+    <!-- Page top navbar -->
     <?php include __DIR__."/../layout/_header.php"; ?>
 
     <section class="banner2" >
-
         <div class="row-banner2 banner-product">
             <div class="content2">
                 <h3>SHOP <br> TREATMENT</h3>
@@ -37,31 +39,15 @@
 
     </section>
 
-    <?php
-
-        include_once __DIR__.'/../model.php';
-    ?>
-
     <section id="treatment-content" class="page-content">
-        <!-- <div class="top-nav p-2 text-secondary small-text">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="" onclick="return navigate('/')">Home</a></li>
-                <li class="breadcrumb-item" aria-current="page">Products</li>
-            </ol>
-            </nav>
-        </div> -->
-
-        <!-- <div class="container"> -->
-            <div class="row mt-3">
-                <div class="col-xs-4 col-md-3 col-2">
-                    <?php include __DIR__."/../layout/components/_left_bar.php"; ?>    
-                </div>
-                <div class="col-xs-8 col-md-9 col-10">
-                    <?php include __DIR__."/../layout/components/_grid.php" ?>
-                </div>
+        <div class="row mt-3">
+            <div class="col-xs-4 col-md-3 col-2">
+                <?php include __DIR__."/../layout/components/_left_bar.php"; ?>    
             </div>
-        <!-- </div> -->
+            <div class="col-xs-8 col-md-9 col-10">
+                <?php include __DIR__."/../layout/components/_grid.php" ?>
+            </div>
+        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -69,6 +55,7 @@
     
     <script>
         <?php
+        // Populate query parameters to browser side.
             echo "var QUERY={
                 category: " . (is_null($FILTER_Category)?'undefined': $FILTER_Category) .",
                 subcategory: " . (is_null($FILTER_SubCategory)?'undefined': $FILTER_SubCategory) .",

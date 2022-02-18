@@ -2,6 +2,7 @@
 <select class="form-select" aria-label="Sort select" id="grid_sort" onchange="onSortChange(this)">
 
 <?php
+// use global model to populate all query parameters sent from browser
 include_once __DIR__ . '/../../model.php';
 
 $selected = $FILTER_Sort == $SORTS->REL ? 'selected': '';
@@ -21,11 +22,8 @@ echo '<option value="name_desc" '.$selected.'>Name (Z-A)</option>';
 
 
 <script>
-    // $('#grid_sort').on('change', function() {
-    //     alert( this.value );
-    // });
     var onSortChange = function(item){
-        // alert(item.value);
+        // update query and submit to server
         if(QUERY){
             QUERY["sort"] = item.value;
         }
