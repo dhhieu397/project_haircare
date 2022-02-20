@@ -1,4 +1,5 @@
 RewriteEngine On
+RewriteBase /
 RewriteRule "^project_haircare/(.*)$" "$1" [QSA]
 RewriteRule "^project_haircare/*$" "/home" [L,R=301]
 RewriteRule "^/*$" "/home" [L,R=301]
