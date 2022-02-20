@@ -1,2 +1,4 @@
 RewriteEngine On
+CheckSpelling On 
+CheckCaseOnly On
 RewriteRule "^project_haircare/(.*)$" "$1" [QSA]
