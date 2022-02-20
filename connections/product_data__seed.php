@@ -311,17 +311,17 @@ function seed_item_4($conn, $id){
 }
 
 drop_tables($dbc);
-prepare_tables($dbc);
-seed_type($dbc);
-seed_brand($dbc);
-seed_category($dbc);
-seed_size($dbc);
-seed_item_1($dbc, 1);
-seed_item_2($dbc, 2);
-for($i=3;$i<14;$i++){
-    seed_item_3($dbc, $i);
-}
-for($i=14;$i<22;$i++){
-    seed_item_4($dbc, $i);
-}
+// prepare_tables($dbc);
+// seed_type($dbc);
+// seed_brand($dbc);
+// seed_category($dbc);
+// seed_size($dbc);
+// seed_item_1($dbc, 1);
+// seed_item_2($dbc, 2);
+// for($i=3;$i<14;$i++){
+//     seed_item_3($dbc, $i);
+// }
+// for($i=14;$i<22;$i++){
+//     seed_item_4($dbc, $i);
+// }
 ?>

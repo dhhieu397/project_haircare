@@ -86,7 +86,7 @@ $relate_items = get_relate($dbc, $row["id"], $row["subcategory"], $row["price"],
                     <div class="col-sm-6 col-lg-4 product-item__container relate-container">
                         <h3 class="product-item__title box">
                             <a href="" onclick="return false;" class="fas fa-heart" style="display: none"></a>
-                            <a class="no-decoration w-100 d-block" href="" onclick="return onClickItem(\''.$item["code"].'\')">
+                            <a class="no-decoration w-100 d-block" href="" onclick="return onCompareItem(\''.$row["code"].'\', \''.$item["code"].'\')">
                                 <span class="product-item__thumbnail d-block">
                                     <img class="center" src="'.$IMAGE_ROOT.$item["img"].'" alt="" width="120px" height="120px">
                                 </span>

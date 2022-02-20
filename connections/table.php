@@ -24,6 +24,15 @@ function drop_tables($conn){
     if($conn->query("DROP TABLE product_type;") !== True){
         echo "Error: " . $conn->error . "\n";
     };
+    if($conn->query("DROP TABLE category;") !== True){
+        echo "Error: " . $conn->error . "\n";
+    };
+    if($conn->query("DROP TABLE category2;") !== True){
+        echo "Error: " . $conn->error . "\n";
+    };
+    if($conn->query("DROP TABLE posts;") !== True){
+        echo "Error: " . $conn->error . "\n";
+    };
 }
 
 function prepare_tables($conn){

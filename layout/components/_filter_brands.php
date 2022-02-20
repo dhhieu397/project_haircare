@@ -32,7 +32,7 @@ function get_brand($conn){
     }
 
     $ls = array(0=> array("name" => "All Brands", "value" => 0, "count" => 0));
-    $sql .= $filter_str." GROUP BY pi.brand;";
+    $sql .= $filter_str." GROUP BY pb.name, pb.id;";
     // echo $sql;
     $result = $conn->query($sql);
     $total = 0;

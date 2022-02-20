@@ -33,7 +33,7 @@ function get_item($conn, $code){
     // $code: unique code of items
     // return searched item
     $sql = "SELECT pi.id, pi.name, pi.description, pi.product_infomation, pi.ingredient, pi.sku,
-                   pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total, pi.subcategory,
+                   pi.price, pi.real_price, pi.rate, pi.rate_number, pi.total, pi.subcategory, pi.code,
                    pb.name as brand, pb.description as brand_detail, ps.name as size
             FROM product_item as pi
             JOIN product_brand as pb ON pi.brand = pb.id
