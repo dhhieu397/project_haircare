@@ -21,7 +21,7 @@
     
 <!-- header section starts  -->
 
-<?php include __DIR__."./layout/_header.php"; ?>
+<?php include __DIR__."/layout/_header.php"; ?>
 
 <!-- header section ends  -->
 

@@ -90,7 +90,7 @@ function prepare_tables($conn){
         description TEXT NOT NULL,
         product_infomation TEXT NOT NULL,
         ingredient TEXT NOT NULL,
-        guide TEXT NOT NULL,
+        guide TEXT,
         img VARCHAR(60) NOT NULL,
         subcategory INT(6) UNSIGNED,
         brand INT(6) UNSIGNED,

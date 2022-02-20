@@ -14,9 +14,8 @@ function get_category($conn){
         LEFT JOIN `product_item` as pi
         ON psc.id = pi.subcategory
         WHERE pc.type='".$SELECTED_TYPE."'
-        GROUP BY pc.name";
+        GROUP BY pc.name, pc.id";
     $result = $conn->query($sql);
-    $total = 0;
     while($row=$result->fetch_assoc()){
         array_push($ls, $row);
     }
@@ -33,7 +32,7 @@ function get_subcategory($conn, $selected_category){
         ON psc.id = pi.subcategory
         WHERE psc.parent = '".$selected_category."'
         AND pc.type='".$SELECTED_TYPE."'
-        GROUP BY psc.name;";
+        GROUP BY psc.name, psc.id;";
     $result = $conn->query($sql);
     while($row=$result->fetch_assoc()){
         array_push($ls, $row);

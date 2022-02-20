@@ -1,8 +1,8 @@
 <?php
 // ** Database connection config
-$servername = "localhost";
+$servername = "localhost:8889";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "haircare";
 // ** End database connection
 
