@@ -91,6 +91,7 @@ $brand_ls = get_brand($dbc);
         }
         if(QUERY){
             QUERY["brand"] = checkedVals;
+            QUERY["page"] = 0;
         }
         // console.log(QUERY);
         doQueryProduct && doQueryProduct();

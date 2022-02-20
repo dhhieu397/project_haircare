@@ -173,8 +173,10 @@
     
 }
 
-.product-info .product-info {
-    
+.product-info .product-info a {
+    text-decoration: inherit!important;
+    color: inherit;
+    pointer-events: none;
 }
 
 .product-info .ingredients {
@@ -182,6 +184,8 @@
 }
 .product-info .ingredients h3 {
     font-style: normal;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .product-info .product-item__title {

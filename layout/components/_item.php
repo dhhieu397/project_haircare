@@ -48,8 +48,17 @@ $relate_items = get_relate($dbc, $row["id"], $row["subcategory"], $row["price"],
     <div class="col-6">
         <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <?php
+                    if(isset($row["images"])){
+                        $index = 0;
+                        foreach($row["images"] as $img){
+                            echo '<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="'.$index.'" class="'.($index==0?'active':'').'" aria-label="Slide 1"></button>';
+                            $index ++;
+                        }
+                    }
+                ?>
+                <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button> -->
                 <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
             </div>
             <div class="carousel-inner">

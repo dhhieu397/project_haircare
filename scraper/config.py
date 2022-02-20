@@ -12,26 +12,29 @@ category = [
     (10, 'Scalp Care Shampoo', 1),
     (11, 'Cleansing & Clarifying Shampoo', 1),
     (12, 'Daily Use', 2),
-    (13, 'Volume Conditioner', 2),
-    (14, 'Repair Conditioner', 2),
-    (15, 'Hair Irons', 4),
-    (16, 'Curling Irons & Tongs', 4),
-    (17, 'Hair Dryers', 4),
-    (18, 'Hair Trimmers', 4),
-    (19, 'Blades', 5),
-    (19, 'Scissors', 5),
+    (13, 'Hair Irons', 4),
+    (14, 'Curling Irons & Tongs', 4),
+    (15, 'Hair Dryers', 4),
+    (16, 'Blades', 5),
+    (17, 'Scissors', 5),
 ]
-
-category_dict = {
-    it[1]: it[0] for it i category
-}
 
 links = [
     "https://www.thehaircaregroup.com/hair-care/shampoo/hair-colour-shampoo/",
     "https://www.thehaircaregroup.com/hair-care/shampoo/repair-shampoo/",
-    "https://www.thehaircaregroup.com/hair-care/shampoo/scalp-care-shampoo/",
     "https://www.thehaircaregroup.com/hair-care/conditioner/colour-conditioner/",
     "https://www.thehaircaregroup.com/hair-care/conditioner/volume-conditioner/",
-    "https://www.thehaircaregroup.com/hair-care/conditioner/repair-conditioner/",
-    "https://www.thehaircaregroup.com/hair-care/conditioner/daily-use/"
+    "https://www.thehaircaregroup.com/hair-care/hair-treatments/colour-treatments/",
+    "https://www.thehaircaregroup.com/tools-brushes/electrical/hair-clippers/",
+    "https://www.thehaircaregroup.com/hair-care/hair-treatments/protein-hair-treatments/",
+    "https://www.thehaircaregroup.com/hair-care/hair-treatments/hair-growth-treatments/",
+    "https://www.thehaircaregroup.com/hair-care/hair-treatments/hydration-hair-treatments/",
+    "https://www.thehaircaregroup.com/hair-care/shampoo/scalp-care-shampoo/",
+    "https://www.thehaircaregroup.com/hair-care/shampoo/cleansing-clarifying-shampoo/",
+    "https://www.thehaircaregroup.com/hair-care/conditioner/daily-use/",
+    "https://www.thehaircaregroup.com/tools-brushes/electrical/hair-irons/",
+    "https://www.thehaircaregroup.com/tools-brushes/electrical/curling-irons-tongs/",
+    "https://www.thehaircaregroup.com/tools-brushes/electrical/hair-dryers/",
+    "https://www.thehaircaregroup.com/tools-brushes/hair-cutting/blades/",
+    "https://www.thehaircaregroup.com/tools-brushes/hair-cutting/scissors/",
 ]

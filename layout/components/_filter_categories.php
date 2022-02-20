@@ -101,6 +101,7 @@ if(!is_null($selected_category)){
         if(QUERY){
             QUERY["subcategory"] = undefined;
             QUERY["category"] = category;
+            QUERY["page"] = 0;
         }
         // console.log(QUERY);
         doQueryProduct && doQueryProduct();
@@ -111,6 +112,7 @@ if(!is_null($selected_category)){
         // build query and submit to server
         if(QUERY){
             QUERY["subcategory"] = subcategory;
+            QUERY["page"] = 0;
         }
         // console.log(QUERY);
         doQueryProduct && doQueryProduct();

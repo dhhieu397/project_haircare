@@ -273,15 +273,12 @@ INSERT INTO `product_subcategory` (`id`, `name`, `parent`) VALUES
 (9, 'Hydration Hair Treatments', 3),
 (10, 'Scalp Care Shampoo', 1),
 (11, 'Cleansing & Clarifying Shampoo', 1),
-(12, 'Colour Conditioner', 2),
-(13, 'Volume Conditioner', 2),
-(14, 'Repair Conditioner', 2),
-(15, 'Hair Irons', 4),
-(16, 'Curling Irons & Tongs', 4),
-(17, 'Hair Dryers', 4),
-(18, 'Hair Trimmers', 4),
-(19, 'Blades', 5),
-(20, 'Scissors', 5);
+(12, 'Daily Use', 2),
+(13, 'Hair Irons', 4),
+(14, 'Curling Irons & Tongs', 4),
+(15, 'Hair Dryers', 4),
+(16, 'Blades', 5),
+(17, 'Scissors', 5);
 
 -- --------------------------------------------------------
 
