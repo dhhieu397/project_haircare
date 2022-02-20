@@ -1,9 +1,9 @@
 <?php
 // ** Database connection config
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "haircare";
+$servername = "us-cdbr-east-05.cleardb.net";
+$username = "b65fd8535b4d27";
+$password = "fc267c65";
+$database = "heroku_99e5b39e6417611";
 // ** End database connection
 
 
