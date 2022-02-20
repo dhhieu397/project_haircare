@@ -212,7 +212,7 @@
 <section class="about" id="about">
 
     <div class="image">
-        <img src="image/8.png" alt="">
+        <img src="image/8.PNG" alt="">
     </div>
 
     <div class="content">

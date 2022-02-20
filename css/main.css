@@ -10,7 +10,6 @@
 .top-nav a:hover {
     text-decoration: underline!important;
 }
- 
 
 .border-bottom {
     border-bottom: 1px solid #ccc;
@@ -43,7 +42,7 @@
 }
 
 .banner-product {
-    background: url(../image/19.png) no-repeat!important;
+    background: url(../image/19.PNG) no-repeat!important;
     background-size: cover!important;
     background-position: center!important;
 }
@@ -65,6 +64,7 @@
     cursor: pointer;
     text-decoration: none;
 }
+
 .product-item__title .fa-heart:hover {
     color: rgb(207, 7, 147);
 }
@@ -86,6 +86,7 @@
     font-size: 2rem;
     color: #130f40;
 }
+
 .product-item__title .price span {
     font-size: 1.5rem;
     color: #666;
@@ -107,7 +108,7 @@
 }
 
 .product-item__container .product-item__info {
-    display: block;    
+    display: block;
 }
 
 .product-item__container {
@@ -156,22 +157,26 @@
     margin-right: auto;
 }
 
-.product-info {font-size: 1.4rem;}
-.product-info .brand {font-size: 2.4rem;font-weight: bold;}
+.product-info {
+    font-size: 1.4rem;
+}
+
+.product-info .brand {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
 
 .product-info .name {
     font-size: 2.2rem;
     padding: 4px 0;
 }
 
-.product-info .info > span:first-child{
+.product-info .info>span:first-child {
     border-right: 1px solid #888;
     padding-right: 6px;
 }
 
-.product-info .description {
-    
-}
+.product-info .description {}
 
 .product-info .product-info a {
     text-decoration: inherit!important;
@@ -182,6 +187,7 @@
 .product-info .ingredients {
     font-style: italic;
 }
+
 .product-info .ingredients h3 {
     font-style: normal;
     display: inline-block;
@@ -195,13 +201,9 @@
     text-align: left;
 }
 
-.product-info .guide {
+.product-info .guide {}
 
-}
-
-.page-content {
-    
-}
+.page-content {}
 
 .banner-contact-us {
     background: url(../image/30.png) no-repeat!important;
@@ -217,20 +219,24 @@
     padding-bottom: 2rem;
 }
 
-.shop-info > div {
+.shop-info>div {
     padding: 2rem;
 }
+
 .shop-info .opening-hours {
     width: 100%;
 }
+
 .shop-info .opening-hours tr {
     border-bottom: 1px dashed #666;
     line-height: 3rem;
     /* font-weight: 500; */
 }
+
 .shop-info .opening-hours tr td:last-child {
     text-align: right;
 }
+
 .shop-info .opening-hours tr span {
     display: block;
 }
@@ -242,11 +248,31 @@
 .relate h3 {
     padding-top: 4rem;
 }
-.relate-container .product-item__brands {font-size: 1.8rem;}
-.relate-container .product-item__name {font-size: 1rem;min-height: auto;}
-.relate-container .product-item__info {font-size: 1.8rem;display: none;}
-.relate-container .stars {font-size: 1rem;padding: 0;}
-.relate-container h3 {font-size: 1rem;padding: .5rem 1rem;position: relative;}
+
+.relate-container .product-item__brands {
+    font-size: 1.8rem;
+}
+
+.relate-container .product-item__name {
+    font-size: 1rem;
+    min-height: auto;
+}
+
+.relate-container .product-item__info {
+    font-size: 1.8rem;
+    display: none;
+}
+
+.relate-container .stars {
+    font-size: 1rem;
+    padding: 0;
+}
+
+.relate-container h3 {
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    position: relative;
+}
 
 .relate-container h3 a .btn {
     display: none;
@@ -256,6 +282,7 @@
     top: 50px;
     left: calc(50% - 4.5rem);
 }
+
 .relate-container h3 a:hover .btn {
     display: unset;
 }
@@ -264,12 +291,14 @@
     text-align: left;
     padding: 1rem 2rem;
 }
+
 .compare-item__container td:first-child {
     font-weight: bold;
     font-size: 1.5rem;
     vertical-align: top;
     padding: 1rem;
 }
+
 .compare-item__container .brand {
     font-size: 1.6rem;
     font-weight: bold;

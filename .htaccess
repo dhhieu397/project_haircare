@@ -2,4 +2,5 @@ RewriteEngine On
 RewriteBase /
 RewriteRule "^project_haircare/(.*)$" "$1" [QSA]
 RewriteRule ^/*$ /home/ [R=301,NC,L]
-RewriteRule "^(.*\.(jpg|gif|png))$" "$1" [NC,L]
+RewriteRule ^/project_haircare/*$ /home/ [R=301,NC,L]
+
