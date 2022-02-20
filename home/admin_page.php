@@ -15,13 +15,16 @@
 </head>
 <body>
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "dbthunghiem1";
+        // $servername = "localhost";
+        // $username = "root";
+        // $password = "";
+        // $dbname = "dbthunghiem1";
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        // // Create connection
+        // $conn = new mysqli($servername, $username, $password, $dbname);
+        include __DIR__."/../connections/connect.php";
+        $conn = $dbc;
+        
         // Check connection
         if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

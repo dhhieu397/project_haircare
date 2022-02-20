@@ -17,13 +17,15 @@
     <!-- ket noi database -->
 
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "haircare";
+        // $servername = "localhost";
+        // $username = "root";
+        // $password = "";
+        // $dbname = "haircare";
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        // // Create connection
+        // $conn = new mysqli($servername, $username, $password, $dbname);
+        include __DIR__."/../connections/connect.php";
+        $conn = $dbc;
 
         // Check connection
         if ($conn->connect_error) {
