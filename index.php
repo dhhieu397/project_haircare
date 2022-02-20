@@ -624,7 +624,7 @@
         <div class="box">
             <div class="image">
                 <h3> <i class="fas fa-calendar"></i> 21st may, 2021 </h3>
-                <img src="image/30.png" alt="">
+                <img src="image/30.PNG" alt="">
             </div>
             <div class="content">
                 <!-- <div class="tags">
